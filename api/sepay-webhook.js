@@ -113,8 +113,16 @@ async function createEInvoice({ order, transferAmount }) {
         headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
         body: JSON.stringify({ tracking_codes: [trackingCode] }),
       });
-      const releaseData = await releaseRes.json();
-      if (releaseData?.data) Object.assign(data, releaseData.data);
+            const releaseText = await releaseRes.text();
+      console.log('[eInvoice] Release status:', releaseRes.status, '| body:', releaseText?.slice(0, 200));
+      if (releaseText && releaseText.trim()) {
+        try {
+          const releaseData = JSON.parse(releaseText);
+          if (releaseData?.data) Object.assign(data, releaseData.data);
+        } catch (e) {
+          console.error('[eInvoice] Release parse error:', e.message);
+        }
+      }
     } catch (err) {
       console.error('[eInvoice] Release error:', err.message);
     }
