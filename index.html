@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Femme Studio — Bộ Prompt AI Tạo Ảnh Profile Chuyên Nghiệp Dành Cho Nữ</title>
+<meta name="description" content="Tạo ảnh profile đẹp như studio chỉ trong 5 phút với bộ prompt AI chuyên nghiệp dành cho nữ. Không cần chụp ảnh, không cần photoshop.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#FFFDF9;--white:#FFFFFF;--warm:#FDF6F0;
+  --s1:#FEF0EB;--s2:#FCEAE2;--s3:#F5DDD5;
+  --rose:#C9524A;--rose-b:#B8403A;--rose-l:#E07A72;--rose-xl:#F5B8B3;
+  --rose-soft:rgba(201,82,74,.1);--rose-glow:rgba(201,82,74,.25);
+  --gold:#B8862A;--gold-l:#D4A44A;--gold-xl:#F0C878;
+  --ink:#1A1210;--ink2:#2C1E1A;--text:#3A2820;--text2:#7A5C52;--text3:#B09088;
+  --border:rgba(201,82,74,.12);--border2:rgba(201,82,74,.25);
+  --ff-d:'Cormorant Garamond',serif;--ff-b:'DM Sans',sans-serif;
+  --tr:.2s cubic-bezier(.4,0,.2,1);--r:10px;--rl:18px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--text);font-family:var(--ff-b);font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--s1)}::-webkit-scrollbar-thumb{background:var(--rose-xl);border-radius:99px}
+
+/* ── URGENCY BAR ── */
+.urgency-bar{background:linear-gradient(135deg,var(--rose-b),var(--rose-l));color:#fff;text-align:center;padding:10px 20px;font-size:13px;font-weight:600;letter-spacing:.02em;position:relative;z-index:300}
+.urgency-bar span{opacity:.85;font-weight:400;margin:0 6px}
+.cd-inline{display:inline-flex;align-items:center;gap:4px;font-weight:700;font-size:15px;margin:0 4px}
+.cd-block-sm{background:rgba(255,255,255,.2);border-radius:4px;padding:1px 7px;font-family:var(--ff-d);font-size:17px;min-width:28px;text-align:center}
+
+/* ── HEADER ── */
+.hdr{position:sticky;top:0;left:0;right:0;z-index:200;height:58px;display:flex;align-items:center;justify-content:space-between;padding:0 36px;background:rgba(255,253,249,.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);box-shadow:0 2px 16px rgba(180,80,60,.06)}
+.hdr-logo{font-family:var(--ff-d);font-size:22px;font-style:italic;font-weight:400;background:linear-gradient(110deg,var(--rose-b),var(--rose-l),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hdr-right{display:flex;align-items:center;gap:16px}
+.hdr-count{font-size:12px;color:var(--text2);display:flex;align-items:center;gap:5px}
+.hdr-count strong{color:var(--rose);font-weight:700}
+.hdr-cta{padding:9px 22px;background:linear-gradient(135deg,var(--rose-b),var(--rose-l));color:#fff;border:none;border-radius:99px;font-family:var(--ff-b);font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;transition:var(--tr);box-shadow:0 4px 14px var(--rose-glow);white-space:nowrap}
+.hdr-cta:hover{transform:translateY(-1px);box-shadow:0 7px 22px var(--rose-glow)}
+@media(max-width:600px){.hdr{padding:0 16px}.hdr-count{display:none}}
+
+/* ── LAYOUT ── */
+.container{max-width:1080px;margin:0 auto;padding:0 24px}
+.s-eye{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--rose);font-weight:600;margin-bottom:12px;text-align:center;display:flex;align-items:center;justify-content:center;gap:8px}
+.s-eye::before,.s-eye::after{content:'';width:24px;height:1px;background:var(--rose-l);opacity:.5}
+.s-title{font-family:var(--ff-d);font-size:clamp(28px,4vw,46px);font-weight:400;text-align:center;line-height:1.15;margin-bottom:14px;color:var(--ink2)}
+.s-sub{font-size:15px;color:var(--text2);text-align:center;max-width:540px;margin:0 auto 48px;font-weight:300;line-height:1.8}
+.text-rose{background:linear-gradient(110deg,var(--rose-b),var(--rose-l));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.text-gold{background:linear-gradient(110deg,var(--gold),var(--gold-l));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+/* ── BUTTONS ── */
+.btn-main{display:inline-flex;align-items:center;gap:10px;padding:16px 40px;background:linear-gradient(135deg,var(--rose-b),var(--rose-l) 60%,var(--gold-xl) 100%);color:#fff;border:none;border-radius:99px;font-family:var(--ff-b);font-size:15px;font-weight:700;cursor:pointer;text-decoration:none;transition:var(--tr);box-shadow:0 8px 28px var(--rose-glow);letter-spacing:.02em;animation:pulse 2.8s ease infinite}
+.btn-main:hover{transform:translateY(-2px);box-shadow:0 14px 40px rgba(180,60,50,.35);animation:none}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;padding:15px 28px;background:transparent;color:var(--rose);border:2px solid var(--border2);border-radius:99px;font-family:var(--ff-b);font-size:14px;font-weight:500;cursor:pointer;text-decoration:none;transition:var(--tr)}
+.btn-ghost:hover{background:var(--rose-soft);transform:translateY(-1px)}
+@keyframes pulse{0%,100%{box-shadow:0 8px 28px var(--rose-glow)}50%{box-shadow:0 12px 44px rgba(180,60,50,.4),0 0 0 8px rgba(201,82,74,.07)}}
+
+/* ── HERO ── */
+.hero{min-height:100vh;display:flex;align-items:center;padding:80px 24px 64px;position:relative;overflow:hidden;background:linear-gradient(150deg,var(--white) 0%,var(--s1) 45%,var(--s2) 80%,var(--s1) 100%)}
+.hero-orb1{position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(224,122,114,.16) 0%,transparent 70%);top:-150px;right:-200px;pointer-events:none}
+.hero-orb2{position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(212,164,74,.12) 0%,transparent 70%);bottom:-100px;left:-150px;pointer-events:none}
+.hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;max-width:1080px;margin:0 auto;width:100%}
+@media(max-width:860px){.hero-inner{grid-template-columns:1fr;text-align:center}.hero-right{order:-1}}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,rgba(212,164,74,.15),rgba(201,82,74,.1));border:1px solid rgba(184,134,42,.25);color:var(--gold);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:6px 18px;border-radius:99px;margin-bottom:24px}
+.hero-h1{font-family:var(--ff-d);font-size:clamp(38px,5.5vw,68px);font-weight:400;line-height:1.08;margin-bottom:18px;color:var(--ink2)}
+.hero-h1 em{font-style:italic;display:block;color:var(--rose)}
+.hero-sub{font-size:clamp(14px,1.8vw,17px);color:var(--text2);line-height:1.85;margin-bottom:32px;font-weight:300;max-width:480px}
+.hero-sub strong{color:var(--text);font-weight:600}
+@media(max-width:860px){.hero-sub{margin:0 auto 32px}}
+.hero-cta-group{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:32px}
+@media(max-width:860px){.hero-cta-group{justify-content:center}}
+.hero-trust{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+@media(max-width:860px){.hero-trust{justify-content:center}}
+.trust-item{display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--text3)}
+.trust-dot{width:5px;height:5px;border-radius:50%;background:var(--rose-xl);flex-shrink:0}
+
+/* ── HERO RIGHT: Before/After ── */
+.before-after{position:relative;width:100%;max-width:420px;margin:0 auto}
+.ba-card{border-radius:20px;overflow:hidden;box-shadow:0 24px 64px rgba(180,60,50,.18),0 4px 16px rgba(0,0,0,.08)}
+.ba-top{display:grid;grid-template-columns:1fr 1fr;gap:3px;background:var(--border)}
+.ba-img{aspect-ratio:3/4;background:linear-gradient(135deg,var(--s2),var(--s3));position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:10px}
+.ba-img img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.ba-label{position:relative;z-index:1;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:99px}
+.ba-label.before{background:rgba(0,0,0,.5);color:rgba(255,255,255,.8)}
+.ba-label.after{background:linear-gradient(135deg,var(--rose-b),var(--rose-l));color:#fff;box-shadow:0 2px 10px var(--rose-glow)}
+.ba-footer{background:var(--white);padding:14px 18px;display:flex;align-items:center;justify-content:space-between}
+.ba-stat{text-align:center}
+.ba-stat-num{font-family:var(--ff-d);font-size:22px;font-weight:600;background:linear-gradient(110deg,var(--rose-b),var(--rose-l));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.ba-stat-lbl{font-size:10px;color:var(--text3);margin-top:2px}
+.ba-divider{width:1px;height:32px;background:var(--border)}
+
+/* Placeholder for images */
+.ba-placeholder{background:linear-gradient(135deg,#f0e4e0,#e8d4ce);width:100%;height:100%;position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.ba-placeholder span{font-size:28px;opacity:.35}
+
+/* ── SOCIAL PROOF BAR ── */
+.proof-bar{background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:22px 0}
+.proof-inner{display:flex;align-items:center;justify-content:center;gap:48px;flex-wrap:wrap}
+.proof-item{display:flex;flex-direction:column;align-items:center;gap:4px}
+.proof-num{font-family:var(--ff-d);font-size:32px;font-weight:600;background:linear-gradient(110deg,var(--rose-b),var(--rose-l));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.proof-lbl{font-size:12px;color:var(--text3)}
+.proof-sep{width:1px;height:40px;background:var(--border)}
+@media(max-width:500px){.proof-sep{display:none}.proof-inner{gap:24px}}
+
+/* ── PAIN ── */
+.pain-section{padding:90px 0;background:var(--white)}
+.pain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.pain-card{background:var(--s1);border:1px solid var(--border);border-radius:var(--rl);padding:26px 22px;transition:var(--tr);position:relative;overflow:hidden}
+.pain-card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--rose-b),var(--rose-xl));transform:scaleX(0);transform-origin:left;transition:var(--tr)}
+.pain-card:hover{border-color:var(--border2);transform:translateY(-3px);box-shadow:0 12px 40px rgba(180,60,50,.12)}
+.pain-card:hover::after{transform:scaleX(1)}
+.pain-emoji{font-size:28px;margin-bottom:12px}
+.pain-title{font-size:14px;font-weight:700;color:var(--ink2);margin-bottom:8px}
+.pain-text{font-size:13px;color:var(--text2);line-height:1.75}
+
+/* ── GALLERY ── */
+.gallery-section{padding:90px 0;background:linear-gradient(160deg,var(--s2),var(--s1))}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:680px){.gallery-grid{grid-template-columns:repeat(2,1fr)}}
+.g-card{border-radius:14px;overflow:hidden;aspect-ratio:3/4;position:relative;background:linear-gradient(135deg,var(--s2),var(--s3));border:2px solid transparent;transition:var(--tr)}
+.g-card:hover{border-color:var(--rose-l);transform:scale(1.025);box-shadow:0 12px 40px rgba(180,60,50,.2)}
+.g-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+.g-card:hover img{transform:scale(1.06)}
+.g-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,var(--s2),var(--s3))}
+.g-placeholder-icon{font-size:32px;opacity:.3}
+.g-placeholder-text{font-size:10px;color:var(--text3);text-align:center;font-style:italic;padding:0 10px}
+.g-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(40,15,10,.7) 100%);opacity:0;transition:var(--tr);display:flex;align-items:flex-end;padding:12px}
+.g-card:hover .g-overlay{opacity:1}
+.g-tag{font-size:11px;color:#fff;font-weight:600}
+.gallery-note{text-align:center;font-size:13px;color:var(--text3);margin-top:20px;font-style:italic}
+
+/* ── HOW IT WORKS ── */
+.howto-section{padding:90px 0;background:var(--white)}
+.step-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:52px}
+@media(max-width:720px){.step-grid{grid-template-columns:1fr}}
+.step-card{background:var(--warm);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;transition:var(--tr)}
+.step-card:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(180,60,50,.12);border-color:var(--border2)}
+.step-top{padding:28px 24px 20px;border-bottom:1px solid var(--border)}
+.step-num{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--rose-b),var(--rose-l));color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;margin-bottom:16px}
+.step-title{font-size:16px;font-weight:700;color:var(--ink2);margin-bottom:8px}
+.step-text{font-size:13px;color:var(--text2);line-height:1.75}
+.step-bottom{padding:16px 24px;background:var(--s1)}
+.step-tag{font-size:12px;color:var(--rose);font-weight:600;display:flex;align-items:center;gap:6px}
+
+/* ── WHATS INCLUDED ── */
+.box-section{padding:90px 0;background:linear-gradient(160deg,var(--s1),var(--s2))}
+.box-wrap{background:var(--white);border:2px solid var(--border2);border-radius:24px;overflow:hidden;max-width:900px;margin:0 auto;box-shadow:0 20px 60px rgba(180,60,50,.12)}
+.box-head{padding:36px 40px 28px;border-bottom:1px solid var(--border);background:linear-gradient(135deg,var(--s2),var(--s1))}
+.box-head-eye{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:8px}
+.box-head-title{font-family:var(--ff-d);font-size:clamp(20px,3vw,32px);font-weight:400;color:var(--ink2)}
+.box-head-title em{font-style:italic;color:var(--rose)}
+.box-body{padding:28px 40px 36px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:600px){.box-body{grid-template-columns:1fr;padding:20px 22px 28px}.box-head{padding:26px 22px}}
+.box-item{display:flex;align-items:flex-start;gap:12px}
+.box-check{width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,var(--rose-b),var(--rose-l));color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;margin-top:2px}
+.box-item-text{font-size:13.5px;color:var(--text2);line-height:1.7}
+.box-item-text strong{color:var(--ink2);font-weight:600;display:block}
+
+/* ── TESTIMONIALS ── */
+.testi-section{padding:90px 0;background:var(--white)}
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-top:48px}
+.testi-card{background:var(--warm);border:1px solid var(--border);border-radius:var(--rl);padding:26px 24px;transition:var(--tr)}
+.testi-card:hover{border-color:var(--border2);transform:translateY(-2px);box-shadow:0 12px 40px rgba(180,60,50,.1)}
+.stars{color:var(--gold-l);font-size:13px;margin-bottom:14px;letter-spacing:2px}
+.testi-text{font-size:14px;color:var(--text2);line-height:1.85;margin-bottom:18px;font-style:italic}
+.testi-text::before{content:'"';font-family:var(--ff-d);font-size:40px;color:var(--rose-xl);line-height:0;vertical-align:-14px;margin-right:2px}
+.testi-author{display:flex;align-items:center;gap:12px}
+.testi-av{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--rose-b),var(--rose-xl));display:flex;align-items:center;justify-content:center;font-family:var(--ff-d);font-size:18px;font-weight:600;color:#fff}
+.testi-name{font-size:13px;font-weight:700;color:var(--ink2)}
+.testi-role{font-size:11px;color:var(--text3);margin-top:1px}
+
+/* ── PRICING ── */
+.pricing-section{padding:100px 0;background:linear-gradient(160deg,var(--s1),var(--s2))}
+.price-box{max-width:620px;margin:0 auto;background:var(--white);border:2px solid var(--border2);border-radius:28px;overflow:hidden;box-shadow:0 24px 80px rgba(180,60,50,.15)}
+.price-head{padding:40px 44px 28px;text-align:center;background:linear-gradient(135deg,var(--s2),var(--s1));border-bottom:1px solid var(--border)}
+.price-ribbon{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--rose-b),var(--rose-l));color:#fff;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:6px 18px;border-radius:99px;margin-bottom:16px}
+.price-name{font-family:var(--ff-d);font-size:28px;font-weight:400;color:var(--ink2);margin-bottom:8px}
+.price-name em{font-style:italic;color:var(--rose)}
+.price-desc{font-size:13px;color:var(--text2);line-height:1.75}
+.price-body{padding:32px 44px 40px}
+@media(max-width:500px){.price-head{padding:28px 22px}.price-body{padding:24px 22px 32px}}
+.price-row{display:flex;align-items:baseline;justify-content:center;gap:14px;margin-bottom:6px}
+.price-old{font-size:20px;color:var(--text3);text-decoration:line-through;font-weight:300}
+.price-new{font-family:var(--ff-d);font-size:72px;font-weight:600;line-height:1;background:linear-gradient(110deg,var(--rose-b),var(--rose-l),var(--gold-l));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.price-unit{font-size:20px;color:var(--text2);align-self:flex-end;padding-bottom:12px;font-weight:300}
+.price-save{text-align:center;font-size:12px;color:var(--rose);font-weight:700;margin-bottom:24px;background:var(--s2);border:1px solid var(--border2);border-radius:99px;padding:5px 20px;display:inline-block;width:100%}
+.price-feats{display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
+.pf-item{display:flex;align-items:center;gap:10px;font-size:13.5px;color:var(--text2)}
+.pf-check{color:var(--rose);font-size:15px;flex-shrink:0}
+.price-cta{display:block;width:100%;padding:18px;background:linear-gradient(135deg,var(--rose-b),var(--rose-l) 60%,var(--gold-xl) 100%);color:#fff;border:none;border-radius:14px;font-family:var(--ff-b);font-size:16px;font-weight:700;cursor:pointer;text-decoration:none;transition:var(--tr);text-align:center;box-shadow:0 8px 28px var(--rose-glow);margin-bottom:16px;animation:pulse 2.8s ease infinite}
+.price-cta:hover{transform:translateY(-2px);animation:none}
+.price-countdown{text-align:center;font-size:13px;color:var(--text2);margin-bottom:18px;background:var(--warm);border-radius:8px;padding:10px}
+.price-countdown strong{color:var(--rose);font-weight:700}
+.price-note{text-align:center;font-size:12px;color:var(--text3);line-height:2}
+
+/* ── PURCHASE COUNTER ── */
+.purchase-counter{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:20px;background:var(--s1);border:1px solid var(--border2);border-radius:99px;padding:10px 20px}
+.pc-avatars{display:flex}
+.pc-av{width:26px;height:26px;border-radius:50%;border:2px solid var(--white);background:linear-gradient(135deg,var(--rose-b),var(--rose-xl));display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;margin-left:-8px;flex-shrink:0}
+.pc-av:first-child{margin-left:0}
+.pc-text{font-size:13px;color:var(--text2)}<br>.pc-text strong{color:var(--rose);font-weight:700}
+
+/* ── FAQ ── */
+.faq-section{padding:80px 0;background:var(--white)}
+.faq-list{max-width:720px;margin:48px auto 0;display:flex;flex-direction:column;gap:12px}
+.faq-item{border:1px solid var(--border);border-radius:var(--r);overflow:hidden;background:var(--warm);transition:var(--tr)}
+.faq-item.open{border-color:var(--border2)}
+.faq-q{width:100%;padding:18px 20px;display:flex;align-items:center;justify-content:space-between;background:transparent;border:none;cursor:pointer;font-family:var(--ff-b);font-size:14px;font-weight:600;color:var(--ink2);text-align:left;gap:12px}
+.faq-icon{width:22px;height:22px;border-radius:50%;background:var(--s2);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--rose);flex-shrink:0;transition:var(--tr)}
+.faq-item.open .faq-icon{transform:rotate(45deg);background:var(--rose-soft)}
+.faq-a{display:none;padding:0 20px 18px;font-size:13.5px;color:var(--text2);line-height:1.8}
+.faq-item.open .faq-a{display:block}
+
+/* ── POLICY ── */
+.policy-section{padding:60px 0 40px;background:var(--warm);border-top:1px solid var(--border)}
+.policy-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-bottom:48px}
+.policy-card{background:var(--white);border:1px solid var(--border);border-radius:var(--rl);padding:26px 22px}
+.policy-icon{font-size:26px;margin-bottom:10px}
+.policy-title{font-size:14px;font-weight:700;color:var(--rose);margin-bottom:12px;text-transform:uppercase;letter-spacing:.05em}
+.policy-list{display:flex;flex-direction:column;gap:10px}
+.policy-item{display:flex;gap:8px;align-items:flex-start;font-size:13px;color:var(--text2);line-height:1.65}
+.policy-dot{color:var(--rose-l);font-size:14px;flex-shrink:0;margin-top:1px}
+.company-bar{border-top:1px solid var(--border);padding-top:28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
+.company-label{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--text3);margin-bottom:6px}
+.company-val{font-size:13px;color:var(--text);line-height:1.7}
+.company-val strong{font-weight:600;font-size:14px}
+.company-val a{color:var(--rose);text-decoration:none}
+
+/* ── FOOTER ── */
+footer{background:var(--s2);padding:20px;text-align:center;border-top:1px solid var(--border)}
+footer p{font-size:12px;color:var(--text3);line-height:1.9;max-width:600px;margin:0 auto}
+
+/* ── MODAL ── */
+.modal-overlay{position:fixed;inset:0;background:rgba(26,18,16,.7);backdrop-filter:blur(8px);z-index:1000;display:none;align-items:center;justify-content:center;padding:16px}
+.modal-overlay.open{display:flex}
+.modal-box{background:var(--white);border-radius:20px;width:100%;max-width:460px;overflow:hidden;box-shadow:0 32px 80px rgba(180,60,50,.2);max-height:90vh;overflow-y:auto}
+.modal-head{padding:24px 28px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;background:linear-gradient(135deg,var(--s2),var(--s1))}
+.modal-title{font-family:var(--ff-d);font-size:22px;font-weight:400;color:var(--ink2)}
+.modal-close{width:30px;height:30px;border-radius:50%;background:var(--s2);border:none;cursor:pointer;font-size:16px;color:var(--text2);display:flex;align-items:center;justify-content:center;transition:var(--tr)}
+.modal-close:hover{background:var(--rose-soft);color:var(--rose)}
+.modal-pkg{background:var(--s1);border:1px solid var(--border2);border-radius:8px;padding:12px 16px;margin:20px 0 16px;display:flex;justify-content:space-between;align-items:center}
+.modal-pkg-name{font-size:12px;color:var(--text2)}
+.modal-pkg-price{font-family:var(--ff-d);font-size:28px;font-weight:600;background:linear-gradient(110deg,var(--rose-b),var(--rose-l));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.modal-body{padding:0 28px 28px}
+.m-label{font-size:12px;font-weight:600;color:var(--ink2);margin-bottom:6px;margin-top:14px;display:block}
+.m-input{width:100%;padding:11px 14px;border:1.5px solid var(--border2);border-radius:8px;font-family:var(--ff-b);font-size:14px;color:var(--ink);background:var(--warm);outline:none;transition:var(--tr)}
+.m-input:focus{border-color:var(--rose-l);background:var(--white)}
+.m-submit{width:100%;padding:15px;background:linear-gradient(135deg,var(--rose-b),var(--rose-l) 60%,var(--gold-xl) 100%);color:#fff;border:none;border-radius:10px;font-family:var(--ff-b);font-size:15px;font-weight:700;cursor:pointer;margin-top:20px;transition:var(--tr);box-shadow:0 6px 20px var(--rose-glow)}
+.m-submit:hover{transform:translateY(-1px)}
+
+/* Step 2 — QR */
+.s2-wrap{padding:20px 28px 28px}
+.s2-title{font-family:var(--ff-d);font-size:20px;color:var(--ink2);margin-bottom:4px}
+.s2-sub{font-size:13px;color:var(--text2);margin-bottom:20px}
+.qr-box{text-align:center;margin-bottom:18px}
+.qr-box img{width:200px;height:200px;border-radius:12px;border:3px solid var(--border2);box-shadow:0 8px 24px rgba(180,60,50,.12)}
+.qr-spinner{display:none;margin:16px auto;width:40px;height:40px;border:3px solid var(--s2);border-top-color:var(--rose-l);border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.s2-info{background:var(--s1);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:14px;font-size:13px;color:var(--text2)}
+.s2-row{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px dashed var(--border)}
+.s2-row:last-child{border-bottom:none}
+.s2-val{font-weight:600;color:var(--ink2)}
+.s2-status{text-align:center;font-size:13px;color:var(--text2);padding:10px;background:var(--warm);border-radius:8px;margin-bottom:12px}
+.s2-status.checking{color:var(--rose)}
+
+/* Step 3 — Success */
+.s3-wrap{padding:28px;text-align:center}
+.s3-icon{font-size:56px;margin-bottom:16px;animation:popIn .5s ease}
+@keyframes popIn{from{transform:scale(0.5);opacity:0}to{transform:scale(1);opacity:1}}
+.s3-title{font-family:var(--ff-d);font-size:26px;color:var(--ink2);margin-bottom:8px}
+.s3-sub{font-size:14px;color:var(--text2);line-height:1.8;margin-bottom:24px}
+.s3-btn{display:block;width:100%;padding:15px;background:linear-gradient(135deg,var(--rose-b),var(--rose-l));color:#fff;border:none;border-radius:10px;font-family:var(--ff-b);font-size:15px;font-weight:700;text-decoration:none;margin-bottom:10px;cursor:pointer;transition:var(--tr);text-align:center}
+.s3-btn:hover{transform:translateY(-1px)}
+.s3-note{font-size:12px;color:var(--text3);line-height:1.8}
+
+/* ── STICKY BUY BAR ── */
+.sticky-bar{position:fixed;bottom:0;left:0;right:0;z-index:150;background:rgba(255,253,249,.97);backdrop-filter:blur(12px);border-top:1px solid var(--border);padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:14px;box-shadow:0 -4px 24px rgba(180,60,50,.1);transform:translateY(100%);transition:transform .35s ease}
+.sticky-bar.show{transform:translateY(0)}
+.sb-left{min-width:0;flex:1}
+.sb-title{font-size:13px;font-weight:700;color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sb-price{font-family:var(--ff-d);font-size:20px;font-weight:600;color:var(--rose);line-height:1}
+.sb-cta{flex-shrink:0;white-space:nowrap;padding:12px 24px;background:linear-gradient(135deg,var(--rose-b),var(--rose-l));color:#fff;border:none;border-radius:99px;font-family:var(--ff-b);font-size:13px;font-weight:700;cursor:pointer;box-shadow:0 4px 16px var(--rose-glow);transition:var(--tr)}
+.sb-cta:hover{transform:translateY(-1px)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  body{overflow-x:hidden}
+  .hero{padding:70px 16px 52px}
+  .container{padding:0 16px}
+  .proof-inner{gap:20px}
+  .step-grid{grid-template-columns:1fr}
+  .sticky-bar{padding:10px 16px}
+}
+</style>
+</head>
+<body>
+
+<!-- URGENCY BAR -->
+<div class="urgency-bar">
+  🔥 Ưu đãi ra mắt kết thúc sau
+  <span>—</span>
+  <span class="cd-inline">
+    <span class="cd-block-sm" id="ub-h">24</span>:<span class="cd-block-sm" id="ub-m">00</span>:<span class="cd-block-sm" id="ub-s">00</span>
+  </span>
+  <span>—</span> Giá <strong>199k</strong> thay vì 399k
+</div>
+
+<!-- HEADER -->
+<header class="hdr">
+  <div class="hdr-logo">Femme Studio</div>
+  <div class="hdr-right">
+    <div class="hdr-count">🔥 <strong id="hdr-buyers">89</strong> người đã mua</div>
+    <button class="hdr-cta" onclick="openModal()">Sở hữu ngay — 199k</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-orb1"></div>
+  <div class="hero-orb2"></div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-badge">✦ Ra mắt 2026 · Giới hạn 200 bộ</div>
+      <h1 class="hero-h1">Ảnh Profile Đẹp<br><em>Như Chụp Studio</em></h1>
+      <p class="hero-sub">
+        Không cần máy ảnh đắt tiền. Không cần photoshop. Không cần đặt lịch chụp hình.<br><br>
+        Chỉ cần <strong>copy 1 đoạn prompt → dán vào AI</strong> — ảnh profile chuyên nghiệp của bạn sẽ xuất hiện trong 5 phút.
+      </p>
+      <div class="hero-cta-group">
+        <button class="btn-main" onclick="openModal()">✨ Sở hữu ngay — 199k</button>
+        <a href="#gallery" class="btn-ghost">Xem ảnh mẫu →</a>
+      </div>
+      <div class="hero-trust">
+        <div class="trust-item"><span class="trust-dot"></span>89 khách hàng đã mua</div>
+        <div class="trust-item"><span class="trust-dot"></span>Nhận file ngay sau thanh toán</div>
+        <div class="trust-item"><span class="trust-dot"></span>Hóa đơn VAT điện tử</div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="before-after">
+        <div class="ba-card">
+          <div class="ba-top">
+            <div class="ba-img">
+              <div class="ba-placeholder"><span>🤳</span></div>
+              <span class="ba-label before">Ảnh selfie thường</span>
+            </div>
+            <div class="ba-img">
+              <div class="ba-placeholder"><span>✨</span></div>
+              <span class="ba-label after">Sau khi dùng prompt</span>
+            </div>
+          </div>
+          <div class="ba-footer">
+            <div class="ba-stat">
+              <div class="ba-stat-num">5'</div>
+              <div class="ba-stat-lbl">Thời gian tạo ảnh</div>
+            </div>
+            <div class="ba-divider"></div>
+            <div class="ba-stat">
+              <div class="ba-stat-num">0đ</div>
+              <div class="ba-stat-lbl">Chi phí chụp studio</div>
+            </div>
+            <div class="ba-divider"></div>
+            <div class="ba-stat">
+              <div class="ba-stat-num">50+</div>
+              <div class="ba-stat-lbl">Phong cách prompt</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF BAR -->
+<div class="proof-bar">
+  <div class="proof-inner container">
+    <div class="proof-item">
+      <div class="proof-num" id="buyers-count">89</div>
+      <div class="proof-lbl">khách đã mua</div>
+    </div>
+    <div class="proof-sep"></div>
+    <div class="proof-item">
+      <div class="proof-num">50+</div>
+      <div class="proof-lbl">phong cách prompt</div>
+    </div>
+    <div class="proof-sep"></div>
+    <div class="proof-item">
+      <div class="proof-num">4.9★</div>
+      <div class="proof-lbl">đánh giá trung bình</div>
+    </div>
+    <div class="proof-sep"></div>
+    <div class="proof-item">
+      <div class="proof-num">&lt;5'</div>
+      <div class="proof-lbl">tạo xong 1 ảnh</div>
+    </div>
+  </div>
+</div>
+
+<!-- PAIN SECTION -->
+<section class="pain-section">
+  <div class="container">
+    <p class="s-eye">Bạn có đang gặp phải</p>
+    <h2 class="s-title">Vì sao ảnh profile của bạn<br><em class="text-rose">chưa tạo được ấn tượng?</em></h2>
+    <p class="s-sub">Ảnh profile là "bộ mặt" đầu tiên người khác thấy — nhưng đây là những lý do khiến nó chưa đủ tốt</p>
+    <div class="pain-grid">
+      <div class="pain-card">
+        <div class="pain-emoji">📸</div>
+        <div class="pain-title">Chụp studio quá đắt & mất thời gian</div>
+        <div class="pain-text">500k-2 triệu mỗi lần chụp, phải đặt lịch trước cả tuần, di chuyển, trang điểm... chỉ để có vài tấm ảnh dùng 1-2 năm.</div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-emoji">🤳</div>
+        <div class="pain-title">Tự chụp selfie nhìn vào không dám đăng</div>
+        <div class="pain-text">Ánh sáng tệ, góc chụp không đẹp, nhìn không chuyên nghiệp. Bạn biết ảnh chưa tốt nhưng không biết làm sao cải thiện.</div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-emoji">😔</div>
+        <div class="pain-title">Ảnh cũ, không phản ánh đúng phong cách hiện tại</div>
+        <div class="pain-text">Ảnh trên LinkedIn, CV, Facebook đã cũ vài năm. Bạn biết cần thay nhưng không muốn tốn thời gian và tiền để chụp lại.</div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-emoji">💼</div>
+        <div class="pain-title">Ảnh kém chuyên nghiệp ảnh hưởng cơ hội việc làm</div>
+        <div class="pain-text">Nhà tuyển dụng, đối tác nhìn vào ảnh profile trước khi quyết định liên hệ. Ảnh không tốt = cơ hội bị bỏ lỡ.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery-section" id="gallery">
+  <div class="container">
+    <p class="s-eye">Kết quả thực tế</p>
+    <h2 class="s-title">Ảnh tạo ra từ<br><em class="text-rose">bộ prompt này</em></h2>
+    <p class="s-sub">Tất cả đều được tạo bằng AI — không qua chỉnh sửa thêm. Kết quả tùy thuộc vào ảnh gốc và phong cách bạn chọn.</p>
+    <div class="gallery-grid">
+      <div class="g-card">
+        <div class="g-placeholder"><span class="g-placeholder-icon">👩‍💼</span><span class="g-placeholder-text">Business Professional</span></div>
+        <div class="g-overlay"><span class="g-tag">Business Professional</span></div>
+      </div>
+      <div class="g-card">
+        <div class="g-placeholder"><span class="g-placeholder-icon">🌸</span><span class="g-placeholder-text">Soft Natural</span></div>
+        <div class="g-overlay"><span class="g-tag">Soft Natural</span></div>
+      </div>
+      <div class="g-card">
+        <div class="g-placeholder"><span class="g-placeholder-icon">✨</span><span class="g-placeholder-text">Studio Elegant</span></div>
+        <div class="g-overlay"><span class="g-tag">Studio Elegant</span></div>
+      </div>
+      <div class="g-card">
+        <div class="g-placeholder"><span class="g-placeholder-icon">🎨</span><span class="g-placeholder-text">Creative Editorial</span></div>
+        <div class="g-overlay"><span class="g-tag">Creative Editorial</span></div>
+      </div>
+      <div class="g-card">
+        <div class="g-placeholder"><span class="g-placeholder-icon">🌿</span><span class="g-placeholder-text">Minimal Clean</span></div>
+        <div class="g-overlay"><span class="g-tag">Minimal Clean</span></div>
+      </div>
+      <div class="g-card">
+        <div class="g-placeholder"><span class="g-placeholder-icon">💫</span><span class="g-placeholder-text">Lifestyle Casual</span></div>
+        <div class="g-overlay"><span class="g-tag">Lifestyle Casual</span></div>
+      </div>
+    </div>
+    <p class="gallery-note">* Upload ảnh mẫu thực tế vào thư mục <code>images/</code> trên GitHub để hiển thị tại đây</p>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="howto-section" id="howto">
+  <div class="container">
+    <p class="s-eye">Đơn giản đến bất ngờ</p>
+    <h2 class="s-title">3 bước — 5 phút —<br><em class="text-rose">ảnh đẹp như studio</em></h2>
+    <div class="step-grid">
+      <div class="step-card">
+        <div class="step-top">
+          <div class="step-num">1</div>
+          <div class="step-title">Mở bộ prompt, chọn phong cách</div>
+          <div class="step-text">Sau khi thanh toán, bạn nhận file HTML chứa 50+ prompt được phân loại rõ ràng: Business, Natural, Elegant, Editorial... Chọn phong cách phù hợp với mục đích sử dụng.</div>
+        </div>
+        <div class="step-bottom">
+          <div class="step-tag">✦ Phân loại theo mục đích sử dụng</div>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-top">
+          <div class="step-num">2</div>
+          <div class="step-title">Copy prompt → Dán vào AI cùng ảnh của bạn</div>
+          <div class="step-text">Mở Gemini, ChatGPT hoặc Midjourney. Dán prompt đã chọn + upload ảnh selfie của bạn. AI sẽ xử lý và tạo ra ảnh profile mới trong vài giây.</div>
+        </div>
+        <div class="step-bottom">
+          <div class="step-tag">✦ Tương thích Gemini · ChatGPT · Midjourney</div>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-top">
+          <div class="step-num">3</div>
+          <div class="step-title">Tải ảnh về, dùng ngay</div>
+          <div class="step-text">Ảnh AI tạo ra giữ được khuôn mặt, đường nét của bạn — chỉ được nâng cấp về ánh sáng, nền, trang phục và tổng thể. Tải về và dùng ngay trên LinkedIn, Facebook, CV.</div>
+        </div>
+        <div class="step-bottom">
+          <div class="step-tag">✦ Giống bạn — chỉ đẹp hơn nhiều</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHATS INCLUDED -->
+<section class="box-section" id="included">
+  <div class="container">
+    <p class="s-eye">Bạn nhận được gì</p>
+    <h2 class="s-title">Toàn bộ những gì có trong<br><em class="text-rose">Femme Studio</em></h2>
+    <div class="box-wrap">
+      <div class="box-head">
+        <div class="box-head-eye">Femme Studio · Bộ Prompt AI Ảnh Profile</div>
+        <div class="box-head-title">File HTML tương tác — <em>50+ prompt sẵn dùng ngay</em></div>
+      </div>
+      <div class="box-body">
+        <div class="box-item"><div class="box-check">✓</div><div class="box-item-text"><strong>50+ prompt chuyên nghiệp</strong>Được viết và tối ưu riêng cho ảnh profile nữ</div></div>
+        <div class="box-item"><div class="box-check">✓</div><div class="box-item-text"><strong>Phân loại theo mục đích</strong>Business, LinkedIn, Social Media, Dating, CV...</div></div>
+        <div class="box-item"><div class="box-check">✓</div><div class="box-item-text"><strong>Hướng dẫn sử dụng chi tiết</strong>Từng bước cho Gemini, ChatGPT, Midjourney</div></div>
+        <div class="box-item"><div class="box-check">✓</div><div class="box-item-text"><strong>Mẹo chọn ảnh gốc tốt nhất</strong>Để AI tạo ra kết quả đẹp nhất có thể</div></div>
+        <div class="box-item"><div class="box-check">✓</div><div class="box-item-text"><strong>Prompt chỉnh sửa nâng cao</strong>Fine-tune ánh sáng, nền, phong cách trang phục</div></div>
+        <div class="box-item"><div class="box-check">✓</div><div class="box-item-text"><strong>Cập nhật miễn phí</strong>Nhận thêm prompt mới khi chúng tôi ra bản cập nhật</div></div>
+        <div class="box-item"><div class="box-check">✓</div><div class="box-item-text"><strong>Giao hàng ngay sau thanh toán</strong>Link tải về email trong vòng 1-3 phút</div></div>
+        <div class="box-item"><div class="box-check">✓</div><div class="box-item-text"><strong>Hóa đơn VAT điện tử</strong>Hợp lệ cho kế toán doanh nghiệp</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testi-section">
+  <div class="container">
+    <p class="s-eye">Khách hàng nói gì</p>
+    <h2 class="s-title">Họ đã thay đổi ảnh profile<br><em class="text-rose">như thế nào</em></h2>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <div class="testi-text">Mình đã định đặt lịch chụp studio 800k, nhưng thử bộ prompt này trước. Kết quả ảnh đẹp không kém gì — tiết kiệm được cả tiền lẫn thời gian. Dùng ngay cho LinkedIn và CV xin việc!</div>
+        <div class="testi-author">
+          <div class="testi-av">L</div>
+          <div><div class="testi-name">Linh N.T.</div><div class="testi-role">Marketing Executive · TP.HCM</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <div class="testi-text">Ban đầu còn nghi ngờ AI tạo ảnh có giống mình không. Nhưng kết quả giữ được khuôn mặt mình — chỉ là đẹp hơn rất nhiều. Thử 3 phong cách khác nhau chỉ trong 15 phút!</div>
+        <div class="testi-author">
+          <div class="testi-av">M</div>
+          <div><div class="testi-name">Mai P.</div><div class="testi-role">Freelancer · Hà Nội</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <div class="testi-text">File hướng dẫn rõ ràng, dễ làm theo dù mình không rành công nghệ. Làm xong ảnh cho team dùng luôn — ai cũng khen đẹp và chuyên nghiệp. Worth it hoàn toàn!</div>
+        <div class="testi-author">
+          <div class="testi-av">H</div>
+          <div><div class="testi-name">Hà T.B.</div><div class="testi-role">Team Leader · Đà Nẵng</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing-section" id="pricing">
+  <div class="container">
+    <p class="s-eye">Sở hữu ngay hôm nay</p>
+    <h2 class="s-title">Đầu tư một lần —<br><em class="text-rose">dùng mãi mãi</em></h2>
+    <div class="price-box">
+      <div class="price-head">
+        <div class="price-ribbon">🔥 Ưu đãi ra mắt · Giới hạn 200 bộ</div>
+        <div class="price-name">Femme Studio — <em>Bộ Prompt AI Ảnh Profile</em></div>
+        <div class="price-desc">50+ prompt chuyên nghiệp · File HTML tương tác · Nhận ngay sau thanh toán</div>
+      </div>
+      <div class="price-body">
+        <div class="price-countdown">
+          ⏰ Giá ưu đãi kết thúc sau: <strong id="cd-h">24</strong>:<strong id="cd-m">00</strong>:<strong id="cd-s">00</strong>
+        </div>
+        <div class="purchase-counter">
+          <div class="pc-avatars">
+            <div class="pc-av">L</div>
+            <div class="pc-av">M</div>
+            <div class="pc-av">H</div>
+            <div class="pc-av">T</div>
+          </div>
+          <div class="pc-text"><strong id="price-buyers">89</strong> người đã sở hữu bộ này · ⭐ 4.9/5</div>
+        </div>
+        <div class="price-row">
+          <span class="price-old">399k</span>
+          <span class="price-new">199</span>
+          <span class="price-unit">k</span>
+        </div>
+        <div class="price-save">🎉 Tiết kiệm 200k — Chỉ áp dụng hôm nay</div>
+        <div class="price-feats">
+          <div class="pf-item"><span class="pf-check">✦</span>50+ prompt AI ảnh profile chuyên nghiệp</div>
+          <div class="pf-item"><span class="pf-check">✦</span>Hướng dẫn sử dụng từng bước chi tiết</div>
+          <div class="pf-item"><span class="pf-check">✦</span>Tương thích Gemini · ChatGPT · Midjourney</div>
+          <div class="pf-item"><span class="pf-check">✦</span>Nhận file ngay sau thanh toán (1-3 phút)</div>
+          <div class="pf-item"><span class="pf-check">✦</span>Hóa đơn VAT điện tử tự động</div>
+          <div class="pf-item"><span class="pf-check">✦</span>Cập nhật miễn phí vĩnh viễn</div>
+        </div>
+        <button class="price-cta" onclick="openModal()">✨ Sở Hữu Ngay — Chỉ 199k</button>
+        <div class="price-note">
+          🔒 Thanh toán bảo mật qua chuyển khoản ngân hàng<br>
+          📧 Link tải file gửi về email ngay sau thanh toán<br>
+          🧾 Hóa đơn VAT điện tử kèm theo
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="container">
+    <p class="s-eye">Câu hỏi thường gặp</p>
+    <h2 class="s-title">Bạn đang thắc mắc<br><em class="text-rose">điều gì?</em></h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">AI có tạo ảnh giống mặt tôi không? <span class="faq-icon">+</span></button>
+        <div class="faq-a">Có — khi bạn cung cấp ảnh gốc của mình, AI sẽ giữ nguyên khuôn mặt, đường nét đặc trưng của bạn và chỉ cải thiện các yếu tố như ánh sáng, nền, trang phục. Kết quả là ảnh nhìn vẫn là bạn — chỉ đẹp và chuyên nghiệp hơn nhiều.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Cần có tài khoản AI trả phí không? <span class="faq-icon">+</span></button>
+        <div class="faq-a">Không bắt buộc. Nhiều prompt trong bộ này hoạt động tốt với Gemini miễn phí và ChatGPT miễn phí. Với tài khoản trả phí, chất lượng ảnh sẽ tốt hơn nhưng bản miễn phí vẫn cho kết quả rất ổn.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Không rành công nghệ có dùng được không? <span class="faq-icon">+</span></button>
+        <div class="faq-a">Hoàn toàn được. Bộ prompt đi kèm hướng dẫn từng bước bằng tiếng Việt — ảnh chụp màn hình chi tiết. Bạn chỉ cần copy, paste và upload ảnh của mình. Không cần biết lập trình hay chỉnh sửa ảnh.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Tôi nhận file như thế nào sau khi thanh toán? <span class="faq-icon">+</span></button>
+        <div class="faq-a">Sau khi chuyển khoản, hệ thống tự động xác nhận giao dịch trong 1-3 phút. Link tải file sẽ được gửi đến email bạn đăng ký. Bạn cũng có thể tải ngay trên trang sau khi thanh toán thành công.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Chính sách hoàn tiền như thế nào? <span class="faq-icon">+</span></button>
+        <div class="faq-a">Đây là sản phẩm số nên không hoàn tiền sau khi đã giao file. Tuy nhiên nếu bạn không nhận được file hoặc link bị lỗi, liên hệ admin@hanadola.com trong vòng 24h để được hỗ trợ gửi lại miễn phí.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Có hóa đơn VAT không? <span class="faq-icon">+</span></button>
+        <div class="faq-a">Có. Hóa đơn VAT điện tử hợp lệ được phát hành tự động và gửi kèm trong email ngay sau thanh toán thành công. Hóa đơn đầy đủ thông tin công ty, MST, hợp lệ cho mục đích kế toán doanh nghiệp.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POLICY -->
+<section class="policy-section">
+  <div class="container">
+    <div class="policy-grid">
+      <div class="policy-card">
+        <div class="policy-icon">🛒</div>
+        <div class="policy-title">Quy Trình Mua Hàng</div>
+        <div class="policy-list">
+          <div class="policy-item"><span class="policy-dot">✦</span>Điền tên, email vào form đặt hàng</div>
+          <div class="policy-item"><span class="policy-dot">✦</span>Quét mã QR chuyển khoản <strong>199.000đ</strong> qua ACB</div>
+          <div class="policy-item"><span class="policy-dot">✦</span>Hệ thống xác nhận tự động trong 1-3 phút</div>
+          <div class="policy-item"><span class="policy-dot">✦</span>Nhận link tải file + hóa đơn VAT qua email</div>
+        </div>
+      </div>
+      <div class="policy-card">
+        <div class="policy-icon">🔄</div>
+        <div class="policy-title">Chính Sách Đổi Trả</div>
+        <div class="policy-list">
+          <div class="policy-item"><span class="policy-dot">✦</span>Sản phẩm số — không hoàn tiền sau khi đã giao file</div>
+          <div class="policy-item"><span class="policy-dot">✦</span>Không nhận được file → liên hệ trong 24h để gửi lại miễn phí</div>
+          <div class="policy-item"><span class="policy-dot">✦</span>Hỗ trợ 1-1 qua email nếu gặp khó khăn khi dùng</div>
+          <div class="policy-item"><span class="policy-dot">✦</span>Liên hệ: <strong>admin@hanadola.com</strong></div>
+        </div>
+      </div>
+      <div class="policy-card">
+        <div class="policy-icon">🔒</div>
+        <div class="policy-title">Bảo Mật Thông Tin</div>
+        <div class="policy-list">
+          <div class="policy-item"><span class="policy-dot">✦</span>Thông tin cá nhân chỉ dùng để giao hàng và hỗ trợ</div>
+          <div class="policy-item"><span class="policy-dot">✦</span>Không chia sẻ, không bán cho bên thứ ba</div>
+          <div class="policy-item"><span class="policy-dot">✦</span>Thanh toán xử lý qua SePay &amp; ACB — mã hóa SSL</div>
+          <div class="policy-item"><span class="policy-dot">✦</span>Dữ liệu lưu trữ an toàn trên hệ thống Vercel</div>
+        </div>
+      </div>
+    </div>
+    <div class="company-bar">
+      <div>
+        <div class="company-label">Đơn vị phát hành</div>
+        <div class="company-val"><strong>Công ty TNHH Hanadola Media &amp; Technology</strong><br>MST: 0319352856</div>
+      </div>
+      <div>
+        <div class="company-label">Địa chỉ</div>
+        <div class="company-val">P903, Tầng 9, Diamond Plaza<br>34 Lê Duẩn, Q.1, TP. Hồ Chí Minh</div>
+      </div>
+      <div>
+        <div class="company-label">Liên hệ</div>
+        <div class="company-val">
+          📧 <a href="mailto:admin@hanadola.com">admin@hanadola.com</a><br>
+          📞 <a href="tel:0935251866">0935 251 866</a><br>
+          🌐 <a href="https://www.hanadola.com">www.hanadola.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Công ty TNHH Hanadola Media &amp; Technology · MST: 0319352856<br>
+  <a href="https://www.hanadola.com" style="color:var(--text3);text-decoration:none">www.hanadola.com</a> · Mọi hành vi sao chép khi chưa được phép là vi phạm bản quyền.</p>
+</footer>
+
+<!-- STICKY BAR -->
+<div class="sticky-bar" id="sticky-bar">
+  <div class="sb-left">
+    <div class="sb-title">Femme Studio — Bộ Prompt AI Ảnh Profile</div>
+    <div class="sb-price">199k <span style="font-size:13px;color:var(--text3);text-decoration:line-through;font-family:var(--ff-b)">399k</span></div>
+  </div>
+  <button class="sb-cta" onclick="openModal()">Sở Hữu Ngay →</button>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal" onclick="handleOverlayClick(event)">
+  <div class="modal-box" id="modal-box">
+
+    <!-- STEP 1: Form -->
+    <div id="step1">
+      <div class="modal-head">
+        <div class="modal-title">Đặt hàng</div>
+        <button class="modal-close" onclick="closeModal()">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-pkg">
+          <div class="modal-pkg-name">Femme Studio — Bộ Prompt AI Ảnh Profile</div>
+          <div class="modal-pkg-price">199<span style="font-size:16px;font-weight:300;color:var(--text2)">k</span></div>
+        </div>
+        <label class="m-label">Họ và tên *</label>
+        <input class="m-input" type="text" id="m-name" placeholder="Nguyễn Thị Lan">
+        <label class="m-label">Email nhận file *</label>
+        <input class="m-input" type="email" id="m-email" placeholder="email@gmail.com">
+        <label class="m-label">Số điện thoại (tuỳ chọn)</label>
+        <input class="m-input" type="tel" id="m-phone" placeholder="09xx.xxx.xxx">
+        <button class="m-submit" onclick="submitOrder()">Tiếp tục — Thanh toán →</button>
+      </div>
+    </div>
+
+    <!-- STEP 2: QR Payment -->
+    <div id="step2" style="display:none">
+      <div class="modal-head">
+        <div class="modal-title">Quét mã thanh toán</div>
+        <button class="modal-close" onclick="closeModal()">✕</button>
+      </div>
+      <div class="s2-wrap">
+        <div class="s2-title">Chuyển khoản để nhận file</div>
+        <div class="s2-sub">Quét mã QR bên dưới hoặc chuyển khoản thủ công</div>
+        <div class="qr-box">
+          <img id="s2-qr" src="" alt="QR Code">
+        </div>
+        <div class="s2-info">
+          <div class="s2-row"><span>Ngân hàng</span><span class="s2-val">ACB</span></div>
+          <div class="s2-row"><span>Số tài khoản</span><span class="s2-val" id="s2-account">20176968</span></div>
+          <div class="s2-row"><span>Chủ tài khoản</span><span class="s2-val" style="font-size:11px">HANADOLA MEDIA AND TECHNOLOGY</span></div>
+          <div class="s2-row"><span>Số tiền</span><span class="s2-val" id="s2-amount" style="color:var(--rose);font-weight:700">199.000 ₫</span></div>
+          <div class="s2-row"><span>Nội dung CK</span><span class="s2-val" id="s2-desc" style="color:var(--rose)">—</span></div>
+        </div>
+        <div class="s2-status checking" id="s2-status">⏳ Đang chờ xác nhận thanh toán...</div>
+        <div class="qr-spinner" id="s2-spinner"></div>
+        <div style="text-align:center;font-size:12px;color:var(--text3);margin-top:8px">Hệ thống tự động xác nhận trong 1-3 phút sau khi bạn chuyển khoản</div>
+      </div>
+    </div>
+
+    <!-- STEP 3: Success -->
+    <div id="step3" style="display:none">
+      <div class="s3-wrap">
+        <div class="s3-icon">🎉</div>
+        <div class="s3-title">Thanh toán thành công!</div>
+        <div class="s3-sub" id="s3-sub">Cảm ơn bạn đã tin tưởng Femme Studio.<br>Link tải file đã được gửi về email của bạn.</div>
+        <a href="#" id="s3-btn" class="s3-btn">📥 Tải Bộ Prompt Ngay</a>
+        <div class="s3-note">📧 Link cũng đã gửi về email · 🧾 Hóa đơn VAT kèm theo<br>Cần hỗ trợ: admin@hanadola.com</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+/* ── COUNTDOWN ── */
+(function(){
+  const KEY = 'fms_cd_end';
+  let end = localStorage.getItem(KEY);
+  if(!end || Date.now() > Number(end)){
+    end = Date.now() + 24*60*60*1000;
+    localStorage.setItem(KEY, end);
+  }
+  function pad(n){return String(n).padStart(2,'0')}
+  function tick(){
+    const diff = Math.max(0, Number(end) - Date.now());
+    const h = Math.floor(diff/3600000);
+    const m = Math.floor((diff%3600000)/60000);
+    const s = Math.floor((diff%60000)/1000);
+    ['ub-h','cd-h'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=pad(h)});
+    ['ub-m','cd-m'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=pad(m)});
+    ['ub-s','cd-s'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=pad(s)});
+  }
+  tick();
+  setInterval(tick,1000);
+})();
+
+/* ── BUYER COUNT ANIMATION ── */
+(function(){
+  const base = 89;
+  let count = base;
+  function updateCount(){
+    ['hdr-buyers','buyers-count','price-buyers'].forEach(id=>{
+      const el = document.getElementById(id);
+      if(el) el.textContent = count;
+    });
+  }
+  // Gradually increase count to create social proof
+  setTimeout(()=>{ count=90; updateCount(); }, 45000);
+  setTimeout(()=>{ count=91; updateCount(); }, 120000);
+})();
+
+/* ── STICKY BAR ── */
+const stickyBar = document.getElementById('sticky-bar');
+window.addEventListener('scroll',()=>{
+  if(window.scrollY > 500) stickyBar.classList.add('show');
+  else stickyBar.classList.remove('show');
+});
+
+/* ── FAQ ── */
+function toggleFaq(btn){
+  const item = btn.parentElement;
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));
+  if(!isOpen) item.classList.add('open');
+}
+
+/* ── MODAL ── */
+function openModal(){
+  document.getElementById('modal').classList.add('open');
+  document.body.style.overflow='hidden';
+  showStep(1);
+}
+function closeModal(){
+  document.getElementById('modal').classList.remove('open');
+  document.body.style.overflow='';
+  if(pollTimer) clearInterval(pollTimer);
+}
+function handleOverlayClick(e){
+  if(e.target === document.getElementById('modal')) closeModal();
+}
+function showStep(n){
+  [1,2,3].forEach(i=>{
+    const el = document.getElementById('step'+i);
+    if(el) el.style.display = i===n?'block':'none';
+  });
+}
+
+/* ── ORDER ── */
+let currentOrderCode = '';
+let pollTimer = null;
+
+async function submitOrder(){
+  const name = document.getElementById('m-name').value.trim();
+  const email = document.getElementById('m-email').value.trim();
+  const phone = document.getElementById('m-phone').value.trim();
+  if(!name){ alert('Vui lòng nhập họ và tên'); return; }
+  if(!email || !email.includes('@')){ alert('Vui lòng nhập email hợp lệ'); return; }
+
+  const btn = document.querySelector('.m-submit');
+  btn.textContent = 'Đang xử lý...';
+  btn.disabled = true;
+
+  try {
+    const res = await fetch('/api/create-order',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({name,email,phone})
+    });
+    const d = await res.json();
+    if(!d.success) throw new Error(d.error || 'Lỗi');
+
+    currentOrderCode = d.orderCode;
+    document.getElementById('s2-qr').src = d.qrUrl;
+    document.getElementById('s2-account').textContent = d.bankInfo?.account || '20176968';
+    document.getElementById('s2-amount').textContent = Number(d.amount).toLocaleString('vi-VN') + ' ₫';
+    document.getElementById('s2-desc').textContent = d.description || `Thanh toan ${d.orderCode}`;
+
+    showStep(2);
+    startPolling();
+  } catch(err){
+    alert('Có lỗi xảy ra: ' + err.message);
+    btn.textContent = 'Tiếp tục — Thanh toán →';
+    btn.disabled = false;
+  }
+}
+
+function startPolling(){
+  document.getElementById('s2-spinner').style.display = 'block';
+  pollTimer = setInterval(checkPayment, 3000);
+}
+
+async function checkPayment(){
+  try {
+    const res = await fetch('/api/check-payment?code=' + currentOrderCode);
+    const d = await res.json();
+    if(d.status === 'paid'){
+      clearInterval(pollTimer);
+      document.getElementById('s2-spinner').style.display = 'none';
+      document.getElementById('s3-btn').href = d.fileUrl || '#';
+      document.getElementById('s3-sub').innerHTML = `Cảm ơn <strong>${d.name || 'bạn'}</strong>! Link tải file đã gửi về email của bạn.`;
+      showStep(3);
+    }
+  } catch(e){ /* retry */ }
+}
+
+/* ── KEYBOARD ESC ── */
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeModal(); });
+</script>
+
+</body>
+</html>
