@@ -80,8 +80,11 @@ body{background:var(--cream);color:var(--text);font-family:var(--ff-b);font-size
 .hero-orb1{position:absolute;width:780px;height:780px;border-radius:50%;background:radial-gradient(circle,rgba(224,122,114,.18) 0%,transparent 68%);top:-180px;right:-220px;pointer-events:none}
 .hero-orb2{position:absolute;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(212,164,74,.13) 0%,transparent 68%);bottom:-100px;left:-160px;pointer-events:none}
 .hero-dots{position:absolute;top:0;left:0;right:0;bottom:0;background-image:radial-gradient(rgba(201,82,74,.08) 1px,transparent 1px);background-size:28px 28px;pointer-events:none;opacity:.5}
-.hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;max-width:1080px;margin:0 auto;width:100%}
-@media(max-width:880px){.hero-inner{grid-template-columns:1fr;text-align:center}.hero-right{order:-1;max-width:400px;margin:0 auto}}
+.hero-inner{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;text-align:center;max-width:720px;margin:0 auto;width:100%}
+.hero-sub{margin-left:auto;margin-right:auto}
+.hero-koi{margin-left:auto;margin-right:auto}
+.hero-cta-group{justify-content:center}
+.hero-trust{justify-content:center}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,rgba(212,164,74,.18),rgba(201,82,74,.1));border:1px solid rgba(184,134,42,.3);color:var(--gold);font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;padding:7px 18px;border-radius:99px;margin-bottom:24px}
 .hero-h1{font-family:var(--ff-d);font-size:clamp(40px,5.8vw,72px);font-weight:400;line-height:1.05;margin-bottom:20px;color:var(--ink2)}
 .hero-h1 em{font-style:italic;display:block;background:linear-gradient(110deg,var(--rose-b),var(--rose-l),#e08060);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
@@ -427,40 +430,6 @@ footer p{font-size:12px;color:var(--text3);line-height:2;max-width:600px;margin:
         <div class="trust-item"><span class="trust-dot"></span>89 người đã mua</div>
         <div class="trust-item"><span class="trust-dot"></span>Nhận tool ngay sau thanh toán</div>
         <div class="trust-item"><span class="trust-dot"></span>Hóa đơn VAT điện tử</div>
-      </div>
-    </div>
-    <div class="hero-right">
-      <div class="tool-mockup">
-        <div class="tm-header">
-          <div class="tm-dots">
-            <div class="tm-dot tm-dot1"></div>
-            <div class="tm-dot tm-dot2"></div>
-            <div class="tm-dot tm-dot3"></div>
-          </div>
-          <div class="tm-title">✨ Femme Studio — Tool Tạo Prompt AI</div>
-        </div>
-        <div class="tm-body">
-          <div class="tm-label">🎨 Phong cách hình ảnh</div>
-          <div class="tm-select"><div class="tm-select-val">✦ Business Professional</div><span class="tm-chevron">▾</span></div>
-          <div class="tm-options-row">
-            <div>
-              <div class="tm-label">🏞 Bối cảnh</div>
-              <div class="tm-select" style="margin-bottom:0"><div class="tm-select-val" style="font-size:12px">Văn phòng hiện đại</div><span class="tm-chevron">▾</span></div>
-            </div>
-            <div>
-              <div class="tm-label">🌈 Màu nền</div>
-              <div class="tm-select" style="margin-bottom:0"><div class="tm-select-val" style="font-size:12px">Trắng tinh khôi</div><span class="tm-chevron">▾</span></div>
-            </div>
-          </div>
-          <div style="height:12px"></div>
-          <div class="tm-label">👗 Phong cách trang phục</div>
-          <div class="tm-select"><div class="tm-select-val">Vest thanh lịch, tông trung tính</div><span class="tm-chevron">▾</span></div>
-          <button class="tm-btn">✨ Tạo Prompt Ngay</button>
-          <div class="tm-output">
-            <div class="tm-output-label">📋 Prompt của bạn — sẵn sàng copy<span style="float:right;font-size:10px;background:var(--white);border:1px solid var(--border2);border-radius:4px;padding:2px 8px;color:var(--rose);cursor:pointer">Copy ✓</span></div>
-            <div class="tm-output-text">A professional headshot of a Vietnamese woman in her 30s, wearing an elegant neutral-toned blazer, white background studio lighting, soft natural skin...</div>
-          </div>
-        </div>
       </div>
     </div>
   </div>
@@ -872,7 +841,7 @@ footer p{font-size:12px;color:var(--text3);line-height:2;max-width:600px;margin:
           <div class="ct-cell good">Chỉ cần điện thoại</div>
         </div>
         <div class="ct-bottom">
-          🧋 Chi phí chỉ bằng 2 ly trà sữa Phúc Long — nhưng có ảnh đẹp như studio, tạo mãi không giới hạn
+          🧋 Chi phí chỉ bằng 2 ly trà sữa KOI — nhưng có ảnh đẹp như studio, tạo mãi không giới hạn
         </div>
       </div>
     </div>
@@ -951,7 +920,7 @@ footer p{font-size:12px;color:var(--text3);line-height:2;max-width:600px;margin:
       <div class="price-body">
         <div class="price-koi">
           <span style="font-size:20px">🧋</span>
-          <span>Chi phí chỉ bằng <strong>2 ly Trà sữa Phúc Long</strong> — nhưng có ảnh đẹp hơn chụp studio, tạo không giới hạn, dùng mãi mãi</span>
+          <span>Chi phí chỉ bằng <strong>2 ly trà sữa KOI</strong> — nhưng có ảnh đẹp hơn chụp studio, tạo không giới hạn, dùng mãi mãi</span>
         </div>
         <div class="price-countdown">
           ⏰ Giá ưu đãi kết thúc sau: <strong id="cd-h">24</strong>:<strong id="cd-m">00</strong>:<strong id="cd-s">00</strong>
