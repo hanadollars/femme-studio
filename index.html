@@ -51,13 +51,13 @@ body{background:var(--cream);color:var(--text);font-family:var(--ff-b);font-size
 
 /* ── HEADER ── */
 .hdr{position:sticky;top:0;z-index:200;height:58px;display:flex;align-items:center;justify-content:space-between;padding:0 36px;background:rgba(255,253,249,.96);backdrop-filter:blur(18px);border-bottom:1px solid var(--border);box-shadow:0 2px 16px rgba(180,80,60,.06)}
-.hdr-logo{font-family:var(--ff-d);font-size:22px;font-style:italic;font-weight:400;background:linear-gradient(110deg,var(--rose-b),var(--rose-l),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hdr-right{display:flex;align-items:center;gap:16px}
-.hdr-count{font-size:12px;color:var(--text2);display:flex;align-items:center;gap:5px}
-.hdr-count strong{color:var(--rose);font-weight:700}
+.hdr-brand{display:flex;flex-direction:column;gap:1px}
+.hdr-logo{font-family:var(--ff-d);font-size:22px;font-style:italic;font-weight:400;background:linear-gradient(110deg,var(--rose-b),var(--rose-l),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.15}
+.hdr-count{font-size:11px;color:var(--text2);display:flex;align-items:center;gap:4px;white-space:nowrap}
+.hdr-count strong{color:var(--rose);font-weight:700;font-size:12px}
 .hdr-cta{padding:9px 22px;background:linear-gradient(135deg,var(--rose-b),var(--rose-l));color:#fff;border:none;border-radius:99px;font-family:var(--ff-b);font-size:13px;font-weight:700;cursor:pointer;text-decoration:none;transition:var(--tr);box-shadow:0 4px 14px var(--rose-glow);white-space:nowrap}
 .hdr-cta:hover{transform:translateY(-1px);box-shadow:0 8px 24px var(--rose-glow)}
-@media(max-width:600px){.hdr{padding:0 16px}.hdr-count{display:none}}
+@media(max-width:600px){.hdr{padding:0 16px}.hdr-count{font-size:10px}}
 
 /* ── LAYOUT ── */
 .container{max-width:1080px;margin:0 auto;padding:0 24px}
@@ -398,11 +398,11 @@ footer p{font-size:12px;color:var(--text3);line-height:2;max-width:600px;margin:
 
 <!-- HEADER -->
 <header class="hdr">
-  <div class="hdr-logo">Femme Studio</div>
-  <div class="hdr-right">
-    <div class="hdr-count">✨ <strong id="hdr-buyers">101089</strong> người đã sở hữu</div>
-    <button class="hdr-cta" onclick="openModal()">Mua ngay — 199k</button>
+  <div class="hdr-brand">
+    <div class="hdr-logo">Femme Studio</div>
+    <div class="hdr-count">✨ <strong id="hdr-buyers">1089</strong> người đã sở hữu</div>
   </div>
+  <button class="hdr-cta" onclick="openModal()">Mua ngay — 199k</button>
 </header>
 
 <!-- HERO -->
@@ -427,7 +427,7 @@ footer p{font-size:12px;color:var(--text3);line-height:2;max-width:600px;margin:
         <a href="#gallery" class="btn-ghost">Xem ảnh mẫu →</a>
       </div>
       <div class="hero-trust">
-        <div class="trust-item"><span class="trust-dot"></span>1089 người đã mua</div>
+        <div class="trust-item"><span class="trust-dot"></span>89 người đã mua</div>
         <div class="trust-item"><span class="trust-dot"></span>Nhận tool ngay sau thanh toán</div>
         <div class="trust-item"><span class="trust-dot"></span>Hóa đơn VAT điện tử</div>
       </div>
@@ -465,7 +465,7 @@ footer p{font-size:12px;color:var(--text3);line-height:2;max-width:600px;margin:
   <div class="container">
     <p class="s-eye">Xem trước khi mua</p>
     <h2 class="s-title">Tool Hoạt Động<br><em class="text-rose">Như Thế Nào?</em></h2>
-    <p class="s-sub">32 giây — bạn sẽ hiểu ngay tại sao hàng nghìn chị em đã chọn Femme Studio thay vì đặt lịch chụp studio</p>
+    <p class="s-sub">32 giây — bạn sẽ hiểu ngay tại sao hàng chục chị em đã chọn Femme Studio thay vì đặt lịch chụp studio</p>
     <div style="display:flex;justify-content:center">
       <div style="position:relative;width:100%;max-width:340px">
         <!-- Phone frame -->
@@ -841,7 +841,7 @@ footer p{font-size:12px;color:var(--text3);line-height:2;max-width:600px;margin:
           <div class="ct-cell good">Chỉ cần điện thoại</div>
         </div>
         <div class="ct-bottom">
-          🧋 Chi phí chỉ bằng 2 ly Trà sữa Phúc Long — nhưng có ảnh đẹp như studio, tạo mãi không giới hạn
+          🧋 Chi phí chỉ bằng 2 ly trà sữa KOI — nhưng có ảnh đẹp như studio, tạo mãi không giới hạn
         </div>
       </div>
     </div>
@@ -920,7 +920,7 @@ footer p{font-size:12px;color:var(--text3);line-height:2;max-width:600px;margin:
       <div class="price-body">
         <div class="price-koi">
           <span style="font-size:20px">🧋</span>
-          <span>Chi phí chỉ bằng <strong>2 ly Trà sữa Phúc Long</strong> — nhưng có ảnh đẹp hơn chụp studio, tạo không giới hạn, dùng mãi mãi</span>
+          <span>Chi phí chỉ bằng <strong>2 ly trà sữa KOI</strong> — nhưng có ảnh đẹp hơn chụp studio, tạo không giới hạn, dùng mãi mãi</span>
         </div>
         <div class="price-countdown">
           ⏰ Giá ưu đãi kết thúc sau: <strong id="cd-h">24</strong>:<strong id="cd-m">00</strong>:<strong id="cd-s">00</strong>
