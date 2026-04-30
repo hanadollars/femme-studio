@@ -3,21 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Femme Studio — Bộ Prompt AI Tạo Ảnh Profile Chuyên Nghiệp Dành Cho Nữ</title>
-<meta name="description" content="Tạo ảnh profile đẹp như studio chỉ trong 5 phút với bộ prompt AI chuyên nghiệp dành cho nữ. Không cần chụp ảnh, không cần photoshop.">
+<title>Tool AI Tạo Ảnh Profile Nữ Đẹp Như Studio — Femme Studio</title>
+<meta name="description" content="Tool AI tạo prompt ảnh profile nữ chuyên nghiệp. Chọn phong cách → nhận prompt → paste vào AI → ảnh đẹp như studio chỉ 5 phút. 199k — dùng vĩnh viễn không giới hạn.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --cream:#FFFDF9;--white:#FFFFFF;--warm:#FDF6F0;
   --s1:#FEF0EB;--s2:#FCEAE2;--s3:#F5DDD5;
-  --rose:#C9524A;--rose-b:#B8403A;--rose-l:#E07A72;--rose-xl:#F5B8B3;
-  --rose-soft:rgba(201,82,74,.1);--rose-glow:rgba(201,82,74,.25);
+  --rose:#C9524A;--rose-b:#A83830;--rose-l:#E07A72;--rose-xl:#F5B8B3;
+  --rose-soft:rgba(201,82,74,.1);--rose-glow:rgba(201,82,74,.28);
+  --pink:#F06292;--pink-l:#F8BBD0;
   --gold:#B8862A;--gold-l:#D4A44A;--gold-xl:#F0C878;
   --ink:#1A1210;--ink2:#2C1E1A;--text:#3A2820;--text2:#7A5C52;--text3:#B09088;
-  --border:rgba(201,82,74,.12);--border2:rgba(201,82,74,.25);
+  --border:rgba(201,82,74,.12);--border2:rgba(201,82,74,.28);
   --ff-d:'Cormorant Garamond',serif;--ff-b:'DM Sans',sans-serif;
-  --tr:.2s cubic-bezier(.4,0,.2,1);--r:10px;--rl:18px;
+  --tr:.22s cubic-bezier(.4,0,.2,1);--r:10px;--rl:18px;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -25,216 +26,282 @@ body{background:var(--cream);color:var(--text);font-family:var(--ff-b);font-size
 ::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--s1)}::-webkit-scrollbar-thumb{background:var(--rose-xl);border-radius:99px}
 
 /* ── URGENCY BAR ── */
-.urgency-bar{background:linear-gradient(135deg,var(--rose-b),var(--rose-l));color:#fff;text-align:center;padding:10px 20px;font-size:13px;font-weight:600;letter-spacing:.02em;position:relative;z-index:300}
+.urgency-bar{background:linear-gradient(135deg,#8a2228,var(--rose),#c9744a);color:#fff;text-align:center;padding:11px 20px;font-size:13px;font-weight:600;letter-spacing:.02em;position:relative;z-index:300}
 .urgency-bar span{opacity:.85;font-weight:400;margin:0 6px}
 .cd-inline{display:inline-flex;align-items:center;gap:4px;font-weight:700;font-size:15px;margin:0 4px}
-.cd-block-sm{background:rgba(255,255,255,.2);border-radius:4px;padding:1px 7px;font-family:var(--ff-d);font-size:17px;min-width:28px;text-align:center}
+.cd-block-sm{background:rgba(255,255,255,.22);border-radius:4px;padding:1px 7px;font-family:var(--ff-d);font-size:17px;min-width:28px;text-align:center}
 
 /* ── HEADER ── */
-.hdr{position:sticky;top:0;left:0;right:0;z-index:200;height:58px;display:flex;align-items:center;justify-content:space-between;padding:0 36px;background:rgba(255,253,249,.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);box-shadow:0 2px 16px rgba(180,80,60,.06)}
+.hdr{position:sticky;top:0;z-index:200;height:58px;display:flex;align-items:center;justify-content:space-between;padding:0 36px;background:rgba(255,253,249,.96);backdrop-filter:blur(18px);border-bottom:1px solid var(--border);box-shadow:0 2px 16px rgba(180,80,60,.06)}
 .hdr-logo{font-family:var(--ff-d);font-size:22px;font-style:italic;font-weight:400;background:linear-gradient(110deg,var(--rose-b),var(--rose-l),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .hdr-right{display:flex;align-items:center;gap:16px}
 .hdr-count{font-size:12px;color:var(--text2);display:flex;align-items:center;gap:5px}
 .hdr-count strong{color:var(--rose);font-weight:700}
-.hdr-cta{padding:9px 22px;background:linear-gradient(135deg,var(--rose-b),var(--rose-l));color:#fff;border:none;border-radius:99px;font-family:var(--ff-b);font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;transition:var(--tr);box-shadow:0 4px 14px var(--rose-glow);white-space:nowrap}
-.hdr-cta:hover{transform:translateY(-1px);box-shadow:0 7px 22px var(--rose-glow)}
+.hdr-cta{padding:9px 22px;background:linear-gradient(135deg,var(--rose-b),var(--rose-l));color:#fff;border:none;border-radius:99px;font-family:var(--ff-b);font-size:13px;font-weight:700;cursor:pointer;text-decoration:none;transition:var(--tr);box-shadow:0 4px 14px var(--rose-glow);white-space:nowrap}
+.hdr-cta:hover{transform:translateY(-1px);box-shadow:0 8px 24px var(--rose-glow)}
 @media(max-width:600px){.hdr{padding:0 16px}.hdr-count{display:none}}
 
 /* ── LAYOUT ── */
 .container{max-width:1080px;margin:0 auto;padding:0 24px}
-.s-eye{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--rose);font-weight:600;margin-bottom:12px;text-align:center;display:flex;align-items:center;justify-content:center;gap:8px}
-.s-eye::before,.s-eye::after{content:'';width:24px;height:1px;background:var(--rose-l);opacity:.5}
-.s-title{font-family:var(--ff-d);font-size:clamp(28px,4vw,46px);font-weight:400;text-align:center;line-height:1.15;margin-bottom:14px;color:var(--ink2)}
-.s-sub{font-size:15px;color:var(--text2);text-align:center;max-width:540px;margin:0 auto 48px;font-weight:300;line-height:1.8}
+.s-eye{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--rose);font-weight:700;margin-bottom:14px;text-align:center;display:flex;align-items:center;justify-content:center;gap:8px}
+.s-eye::before,.s-eye::after{content:'';width:28px;height:1px;background:var(--rose-l);opacity:.5}
+.s-title{font-family:var(--ff-d);font-size:clamp(30px,4.2vw,50px);font-weight:400;text-align:center;line-height:1.12;margin-bottom:14px;color:var(--ink2)}
+.s-sub{font-size:15px;color:var(--text2);text-align:center;max-width:580px;margin:0 auto 52px;font-weight:300;line-height:1.85}
 .text-rose{background:linear-gradient(110deg,var(--rose-b),var(--rose-l));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .text-gold{background:linear-gradient(110deg,var(--gold),var(--gold-l));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 
 /* ── BUTTONS ── */
-.btn-main{display:inline-flex;align-items:center;gap:10px;padding:16px 40px;background:linear-gradient(135deg,var(--rose-b),var(--rose-l) 60%,var(--gold-xl) 100%);color:#fff;border:none;border-radius:99px;font-family:var(--ff-b);font-size:15px;font-weight:700;cursor:pointer;text-decoration:none;transition:var(--tr);box-shadow:0 8px 28px var(--rose-glow);letter-spacing:.02em;animation:pulse 2.8s ease infinite}
-.btn-main:hover{transform:translateY(-2px);box-shadow:0 14px 40px rgba(180,60,50,.35);animation:none}
+.btn-main{display:inline-flex;align-items:center;gap:10px;padding:17px 44px;background:linear-gradient(135deg,var(--rose-b),var(--rose-l) 55%,#e0906e 100%);color:#fff;border:none;border-radius:99px;font-family:var(--ff-b);font-size:15px;font-weight:700;cursor:pointer;text-decoration:none;transition:var(--tr);box-shadow:0 8px 32px var(--rose-glow);letter-spacing:.02em;animation:pulse 2.8s ease infinite}
+.btn-main:hover{transform:translateY(-2px);box-shadow:0 16px 44px rgba(168,56,48,.4);animation:none}
 .btn-ghost{display:inline-flex;align-items:center;gap:8px;padding:15px 28px;background:transparent;color:var(--rose);border:2px solid var(--border2);border-radius:99px;font-family:var(--ff-b);font-size:14px;font-weight:500;cursor:pointer;text-decoration:none;transition:var(--tr)}
 .btn-ghost:hover{background:var(--rose-soft);transform:translateY(-1px)}
-@keyframes pulse{0%,100%{box-shadow:0 8px 28px var(--rose-glow)}50%{box-shadow:0 12px 44px rgba(180,60,50,.4),0 0 0 8px rgba(201,82,74,.07)}}
+@keyframes pulse{0%,100%{box-shadow:0 8px 32px var(--rose-glow)}50%{box-shadow:0 14px 48px rgba(168,56,48,.42),0 0 0 10px rgba(201,82,74,.06)}}
 
 /* ── HERO ── */
-.hero{min-height:100vh;display:flex;align-items:center;padding:80px 24px 64px;position:relative;overflow:hidden;background:linear-gradient(150deg,var(--white) 0%,var(--s1) 45%,var(--s2) 80%,var(--s1) 100%)}
-.hero-orb1{position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(224,122,114,.16) 0%,transparent 70%);top:-150px;right:-200px;pointer-events:none}
-.hero-orb2{position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(212,164,74,.12) 0%,transparent 70%);bottom:-100px;left:-150px;pointer-events:none}
-.hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;max-width:1080px;margin:0 auto;width:100%}
-@media(max-width:860px){.hero-inner{grid-template-columns:1fr;text-align:center}.hero-right{order:-1}}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,rgba(212,164,74,.15),rgba(201,82,74,.1));border:1px solid rgba(184,134,42,.25);color:var(--gold);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:6px 18px;border-radius:99px;margin-bottom:24px}
-.hero-h1{font-family:var(--ff-d);font-size:clamp(38px,5.5vw,68px);font-weight:400;line-height:1.08;margin-bottom:18px;color:var(--ink2)}
-.hero-h1 em{font-style:italic;display:block;color:var(--rose)}
-.hero-sub{font-size:clamp(14px,1.8vw,17px);color:var(--text2);line-height:1.85;margin-bottom:32px;font-weight:300;max-width:480px}
-.hero-sub strong{color:var(--text);font-weight:600}
-@media(max-width:860px){.hero-sub{margin:0 auto 32px}}
-.hero-cta-group{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:32px}
-@media(max-width:860px){.hero-cta-group{justify-content:center}}
+.hero{min-height:100vh;display:flex;align-items:center;padding:80px 24px 64px;position:relative;overflow:hidden;background:linear-gradient(145deg,var(--white) 0%,var(--s1) 40%,#fde8e0 75%,var(--s2) 100%)}
+.hero-orb1{position:absolute;width:780px;height:780px;border-radius:50%;background:radial-gradient(circle,rgba(224,122,114,.18) 0%,transparent 68%);top:-180px;right:-220px;pointer-events:none}
+.hero-orb2{position:absolute;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(212,164,74,.13) 0%,transparent 68%);bottom:-100px;left:-160px;pointer-events:none}
+.hero-dots{position:absolute;top:0;left:0;right:0;bottom:0;background-image:radial-gradient(rgba(201,82,74,.08) 1px,transparent 1px);background-size:28px 28px;pointer-events:none;opacity:.5}
+.hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;max-width:1080px;margin:0 auto;width:100%}
+@media(max-width:880px){.hero-inner{grid-template-columns:1fr;text-align:center}.hero-right{order:-1;max-width:400px;margin:0 auto}}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,rgba(212,164,74,.18),rgba(201,82,74,.1));border:1px solid rgba(184,134,42,.3);color:var(--gold);font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;padding:7px 18px;border-radius:99px;margin-bottom:24px}
+.hero-h1{font-family:var(--ff-d);font-size:clamp(40px,5.8vw,72px);font-weight:400;line-height:1.05;margin-bottom:20px;color:var(--ink2)}
+.hero-h1 em{font-style:italic;display:block;background:linear-gradient(110deg,var(--rose-b),var(--rose-l),#e08060);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:clamp(14px,1.8vw,17px);color:var(--text2);line-height:1.9;margin-bottom:20px;font-weight:300;max-width:500px}
+.hero-sub strong{color:var(--ink2);font-weight:600}
+.hero-koi{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,rgba(201,82,74,.08),rgba(212,164,74,.1));border:1px solid rgba(201,82,74,.2);border-radius:10px;padding:10px 16px;margin-bottom:28px;font-size:13.5px;color:var(--text2);line-height:1.6;max-width:460px;text-align:left}
+.hero-koi .koi-icon{font-size:22px;flex-shrink:0}
+.hero-koi strong{color:var(--rose);font-weight:700}
+@media(max-width:880px){.hero-sub,.hero-koi{margin-left:auto;margin-right:auto}.hero-koi{text-align:center}}
+.hero-cta-group{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:28px}
+@media(max-width:880px){.hero-cta-group{justify-content:center}}
 .hero-trust{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
-@media(max-width:860px){.hero-trust{justify-content:center}}
+@media(max-width:880px){.hero-trust{justify-content:center}}
 .trust-item{display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--text3)}
 .trust-dot{width:5px;height:5px;border-radius:50%;background:var(--rose-xl);flex-shrink:0}
 
-/* ── HERO RIGHT: Before/After ── */
-.before-after{position:relative;width:100%;max-width:420px;margin:0 auto}
-.ba-card{border-radius:20px;overflow:hidden;box-shadow:0 24px 64px rgba(180,60,50,.18),0 4px 16px rgba(0,0,0,.08)}
-.ba-top{display:grid;grid-template-columns:1fr 1fr;gap:3px;background:var(--border)}
-.ba-img{aspect-ratio:3/4;background:linear-gradient(135deg,var(--s2),var(--s3));position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:10px}
-.ba-img img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
-.ba-label{position:relative;z-index:1;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:99px}
-.ba-label.before{background:rgba(0,0,0,.5);color:rgba(255,255,255,.8)}
-.ba-label.after{background:linear-gradient(135deg,var(--rose-b),var(--rose-l));color:#fff;box-shadow:0 2px 10px var(--rose-glow)}
-.ba-footer{background:var(--white);padding:14px 18px;display:flex;align-items:center;justify-content:space-between}
-.ba-stat{text-align:center}
-.ba-stat-num{font-family:var(--ff-d);font-size:22px;font-weight:600;background:linear-gradient(110deg,var(--rose-b),var(--rose-l));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
-.ba-stat-lbl{font-size:10px;color:var(--text3);margin-top:2px}
-.ba-divider{width:1px;height:32px;background:var(--border)}
-
-/* Placeholder for images */
-.ba-placeholder{background:linear-gradient(135deg,#f0e4e0,#e8d4ce);width:100%;height:100%;position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
-.ba-placeholder span{font-size:28px;opacity:.35}
+/* ── TOOL MOCKUP ── */
+.tool-mockup{background:var(--white);border:1.5px solid var(--border2);border-radius:20px;overflow:hidden;box-shadow:0 28px 72px rgba(180,60,50,.18),0 4px 18px rgba(0,0,0,.07);max-width:400px;margin:0 auto}
+.tm-header{background:linear-gradient(135deg,var(--rose-b),var(--rose-l));padding:14px 20px;display:flex;align-items:center;gap:10px}
+.tm-dots{display:flex;gap:5px}
+.tm-dot{width:10px;height:10px;border-radius:50%}
+.tm-dot1{background:rgba(255,255,255,.4)}
+.tm-dot2{background:rgba(255,255,255,.55)}
+.tm-dot3{background:rgba(255,255,255,.7)}
+.tm-title{color:#fff;font-size:13px;font-weight:700;margin-left:4px;letter-spacing:.03em}
+.tm-body{padding:18px 20px}
+.tm-label{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text3);margin-bottom:5px}
+.tm-select{width:100%;padding:9px 12px;border:1.5px solid var(--border2);border-radius:8px;background:var(--s1);font-size:13px;color:var(--ink2);font-weight:500;margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;cursor:pointer}
+.tm-select-val{display:flex;align-items:center;gap:6px}
+.tm-chevron{color:var(--rose);font-size:11px}
+.tm-options-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.tm-btn{width:100%;padding:12px;background:linear-gradient(135deg,var(--rose-b),var(--rose-l));color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-bottom:14px;display:flex;align-items:center;justify-content:center;gap:6px}
+.tm-output{background:linear-gradient(135deg,var(--s1),var(--s2));border:1.5px solid var(--border2);border-radius:10px;padding:12px;position:relative}
+.tm-output-label{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--rose);margin-bottom:7px}
+.tm-output-text{font-size:11.5px;color:var(--text2);line-height:1.7;height:52px;overflow:hidden;position:relative}
+.tm-output-text::after{content:'';position:absolute;bottom:0;left:0;right:0;height:24px;background:linear-gradient(transparent,var(--s1))}
+.tm-copy-btn{display:flex;align-items:center;gap:5px;margin-top:8px;font-size:11px;color:var(--rose);font-weight:700;cursor:pointer}
 
 /* ── SOCIAL PROOF BAR ── */
-.proof-bar{background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:22px 0}
-.proof-inner{display:flex;align-items:center;justify-content:center;gap:48px;flex-wrap:wrap}
-.proof-item{display:flex;flex-direction:column;align-items:center;gap:4px}
-.proof-num{font-family:var(--ff-d);font-size:32px;font-weight:600;background:linear-gradient(110deg,var(--rose-b),var(--rose-l));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
-.proof-lbl{font-size:12px;color:var(--text3)}
-.proof-sep{width:1px;height:40px;background:var(--border)}
+.proof-bar{background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:24px 0}
+.proof-inner{display:flex;align-items:center;justify-content:center;gap:52px;flex-wrap:wrap}
+.proof-item{display:flex;flex-direction:column;align-items:center;gap:5px}
+.proof-num{font-family:var(--ff-d);font-size:34px;font-weight:600;background:linear-gradient(110deg,var(--rose-b),var(--rose-l));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.proof-lbl{font-size:12px;color:var(--text3);text-align:center}
+.proof-sep{width:1px;height:44px;background:var(--border)}
 @media(max-width:500px){.proof-sep{display:none}.proof-inner{gap:24px}}
 
 /* ── PAIN ── */
-.pain-section{padding:90px 0;background:var(--white)}
+.pain-section{padding:96px 0;background:var(--white)}
 .pain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
-.pain-card{background:var(--s1);border:1px solid var(--border);border-radius:var(--rl);padding:26px 22px;transition:var(--tr);position:relative;overflow:hidden}
-.pain-card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--rose-b),var(--rose-xl));transform:scaleX(0);transform-origin:left;transition:var(--tr)}
-.pain-card:hover{border-color:var(--border2);transform:translateY(-3px);box-shadow:0 12px 40px rgba(180,60,50,.12)}
-.pain-card:hover::after{transform:scaleX(1)}
-.pain-emoji{font-size:28px;margin-bottom:12px}
-.pain-title{font-size:14px;font-weight:700;color:var(--ink2);margin-bottom:8px}
-.pain-text{font-size:13px;color:var(--text2);line-height:1.75}
+.pain-card{background:linear-gradient(135deg,var(--s1),var(--cream));border:1px solid var(--border);border-radius:var(--rl);padding:28px 22px;transition:var(--tr);position:relative;overflow:hidden}
+.pain-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--rose-b),var(--rose-xl));transform:scaleX(0);transform-origin:left;transition:var(--tr)}
+.pain-card:hover{border-color:var(--border2);transform:translateY(-4px);box-shadow:0 14px 44px rgba(180,60,50,.13)}
+.pain-card:hover::before{transform:scaleX(1)}
+.pain-emoji{font-size:32px;margin-bottom:14px}
+.pain-title{font-size:15px;font-weight:700;color:var(--ink2);margin-bottom:9px;line-height:1.4}
+.pain-text{font-size:13px;color:var(--text2);line-height:1.8}
+
+/* ── TOOL FEATURES ── */
+.tool-section{padding:96px 0;background:linear-gradient(160deg,#fde8e4,var(--s1),#fdeee8)}
+.tool-inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;max-width:1080px;margin:0 auto;padding:0 24px}
+@media(max-width:860px){.tool-inner{grid-template-columns:1fr}}
+.tool-text-side{}
+.tool-eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--rose);font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.tool-eyebrow::after{content:'';width:28px;height:1px;background:var(--rose-l);opacity:.5}
+.tool-h2{font-family:var(--ff-d);font-size:clamp(28px,4vw,46px);font-weight:400;line-height:1.15;margin-bottom:18px;color:var(--ink2)}
+.tool-h2 em{font-style:italic;color:var(--rose)}
+.tool-desc{font-size:14.5px;color:var(--text2);line-height:1.9;margin-bottom:28px;font-weight:300}
+.tool-desc strong{color:var(--ink2);font-weight:600}
+.tool-options{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:28px}
+.tool-opt{display:flex;align-items:center;gap:10px;background:var(--white);border:1px solid var(--border2);border-radius:10px;padding:12px 14px;font-size:13px;color:var(--text2)}
+.tool-opt-icon{font-size:18px;flex-shrink:0}
+.tool-opt-name{font-weight:600;color:var(--ink2);font-size:12.5px}
+.tool-opt-val{font-size:11px;color:var(--text3)}
+.tool-bigmock{background:var(--white);border:1.5px solid var(--border2);border-radius:20px;overflow:hidden;box-shadow:0 24px 64px rgba(180,60,50,.16)}
+.tbm-head{background:linear-gradient(135deg,var(--rose-b),var(--rose-l));padding:16px 22px}
+.tbm-head-title{color:#fff;font-weight:700;font-size:14px;display:flex;align-items:center;gap:8px}
+.tbm-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);padding:0}
+.tbm-field{background:var(--white);padding:14px 16px}
+.tbm-flabel{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--text3);margin-bottom:6px}
+.tbm-fval{display:flex;align-items:center;justify-content:space-between;background:var(--s1);border:1.5px solid var(--border2);border-radius:7px;padding:8px 12px;font-size:13px;color:var(--ink2);font-weight:500}
+.tbm-fchevron{color:var(--rose);font-size:11px}
+.tbm-btn-row{padding:16px 16px 14px;background:var(--white);border-top:1px solid var(--border)}
+.tbm-genbtn{width:100%;padding:13px;background:linear-gradient(135deg,var(--rose-b),var(--rose-l));color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;box-shadow:0 4px 16px var(--rose-glow)}
+.tbm-result{padding:14px 16px;background:var(--s2);border-top:1px solid var(--border)}
+.tbm-rlabel{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--rose);margin-bottom:7px;display:flex;align-items:center;justify-content:space-between}
+.tbm-copy{background:var(--white);border:1px solid var(--border2);border-radius:5px;padding:3px 9px;font-size:10px;color:var(--rose);font-weight:700;cursor:pointer}
+.tbm-prompt{font-size:11.5px;color:var(--text2);line-height:1.7;background:var(--white);border-radius:8px;padding:10px 12px;border:1px solid var(--border);position:relative;overflow:hidden;height:68px}
+.tbm-prompt::after{content:'';position:absolute;bottom:0;left:0;right:0;height:28px;background:linear-gradient(transparent,var(--white))}
 
 /* ── GALLERY ── */
-.gallery-section{padding:90px 0;background:linear-gradient(160deg,var(--s2),var(--s1))}
-.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-@media(max-width:680px){.gallery-grid{grid-template-columns:repeat(2,1fr)}}
-.g-card{border-radius:14px;overflow:hidden;aspect-ratio:3/4;position:relative;background:linear-gradient(135deg,var(--s2),var(--s3));border:2px solid transparent;transition:var(--tr)}
-.g-card:hover{border-color:var(--rose-l);transform:scale(1.025);box-shadow:0 12px 40px rgba(180,60,50,.2)}
-.g-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
-.g-card:hover img{transform:scale(1.06)}
-.g-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,var(--s2),var(--s3))}
-.g-placeholder-icon{font-size:32px;opacity:.3}
-.g-placeholder-text{font-size:10px;color:var(--text3);text-align:center;font-style:italic;padding:0 10px}
-.g-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(40,15,10,.7) 100%);opacity:0;transition:var(--tr);display:flex;align-items:flex-end;padding:12px}
+.gallery-section{padding:96px 0;background:var(--ink2);position:relative;overflow:hidden}
+.gallery-section::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,#2C1E1A 0%,#1A1210 50%,#2a1a15 100%)}
+.gallery-section .s-eye{color:var(--rose-xl)}
+.gallery-section .s-eye::before,.gallery-section .s-eye::after{background:var(--rose-xl)}
+.gallery-section .s-title{color:#fff}
+.gallery-section .s-sub{color:rgba(255,255,255,.55)}
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;position:relative;z-index:1}
+@media(max-width:900px){.gallery-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:600px){.gallery-grid{grid-template-columns:repeat(2,1fr);gap:8px}}
+.g-card{border-radius:12px;overflow:hidden;aspect-ratio:3/4;position:relative;background:linear-gradient(135deg,#3a2820,#2C1E1A);border:1.5px solid rgba(201,82,74,.15);transition:var(--tr)}
+.g-card:hover{border-color:var(--rose-l);transform:scale(1.03);box-shadow:0 16px 44px rgba(201,82,74,.35);z-index:2}
+.g-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
+.g-card:hover img{transform:scale(1.08)}
+.g-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,#3a2820,#2C1E1A)}
+.g-placeholder-icon{font-size:30px;opacity:.25}
+.g-placeholder-text{font-size:10px;color:rgba(255,255,255,.25);text-align:center;font-style:italic;padding:0 10px}
+.g-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(20,8,6,.88) 100%);opacity:0;transition:var(--tr);display:flex;align-items:flex-end;padding:14px}
 .g-card:hover .g-overlay{opacity:1}
-.g-tag{font-size:11px;color:#fff;font-weight:600}
-.gallery-note{text-align:center;font-size:13px;color:var(--text3);margin-top:20px;font-style:italic}
+.g-tag{font-size:11px;color:rgba(255,255,255,.9);font-weight:600;background:rgba(201,82,74,.85);border-radius:5px;padding:3px 9px}
+.gallery-note{text-align:center;font-size:13px;color:rgba(255,255,255,.35);margin-top:22px;font-style:italic;position:relative;z-index:1}
 
 /* ── HOW IT WORKS ── */
-.howto-section{padding:90px 0;background:var(--white)}
-.step-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:52px}
-@media(max-width:720px){.step-grid{grid-template-columns:1fr}}
-.step-card{background:var(--warm);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;transition:var(--tr)}
-.step-card:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(180,60,50,.12);border-color:var(--border2)}
-.step-top{padding:28px 24px 20px;border-bottom:1px solid var(--border)}
-.step-num{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--rose-b),var(--rose-l));color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;margin-bottom:16px}
-.step-title{font-size:16px;font-weight:700;color:var(--ink2);margin-bottom:8px}
-.step-text{font-size:13px;color:var(--text2);line-height:1.75}
-.step-bottom{padding:16px 24px;background:var(--s1)}
-.step-tag{font-size:12px;color:var(--rose);font-weight:600;display:flex;align-items:center;gap:6px}
+.howto-section{padding:96px 0;background:var(--white)}
+.step-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:52px;position:relative}
+.step-grid::before{content:'';position:absolute;top:40px;left:10%;right:10%;height:2px;background:linear-gradient(90deg,var(--rose-b),var(--rose-xl),var(--rose-b));z-index:0}
+@media(max-width:800px){.step-grid{grid-template-columns:1fr 1fr;gap:18px}.step-grid::before{display:none}}
+@media(max-width:500px){.step-grid{grid-template-columns:1fr}}
+.step-card{padding:0 16px;text-align:center;position:relative;z-index:1}
+.step-num{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--rose-b),var(--rose-l));color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;margin:0 auto 18px;border:3px solid var(--white);box-shadow:0 0 0 4px var(--rose-xl)}
+.step-icon{font-size:26px;margin-bottom:10px}
+.step-title{font-size:15px;font-weight:700;color:var(--ink2);margin-bottom:9px;line-height:1.4}
+.step-text{font-size:13px;color:var(--text2);line-height:1.8}
+.step-compat{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:12px;flex-wrap:wrap}
+.step-compat-tag{font-size:10.5px;background:var(--s1);border:1px solid var(--border2);border-radius:99px;padding:3px 10px;color:var(--rose);font-weight:600}
+
+/* ── COMPARISON ── */
+.compare-section{padding:96px 0;background:linear-gradient(160deg,var(--s2),var(--s1))}
+.compare-wrap{max-width:800px;margin:0 auto}
+.compare-table{border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(180,60,50,.12);border:1px solid var(--border2)}
+.ct-head{display:grid;grid-template-columns:1.5fr 1fr 1fr;background:var(--ink2)}
+.ct-head-cell{padding:18px 20px;font-size:13px;font-weight:700;text-align:center;color:rgba(255,255,255,.5)}
+.ct-head-cell.tool-col{background:linear-gradient(135deg,var(--rose-b),var(--rose-l));color:#fff;font-size:14px;display:flex;flex-direction:column;align-items:center;gap:4px}
+.ct-head-cell.tool-col span{font-size:10px;font-weight:400;opacity:.85}
+.ct-row{display:grid;grid-template-columns:1.5fr 1fr 1fr;border-top:1px solid var(--border)}
+.ct-row:nth-child(even){background:var(--s1)}
+.ct-row:nth-child(odd){background:var(--white)}
+.ct-feature{padding:14px 18px;font-size:13px;color:var(--text);font-weight:500;display:flex;align-items:center;gap:8px}
+.ct-cell{padding:14px 16px;font-size:13px;text-align:center;display:flex;align-items:center;justify-content:center}
+.ct-cell.good{color:#2E7D32;font-weight:700;font-size:14px}
+.ct-cell.bad{color:var(--text3);font-size:13px}
+.ct-cell.mid{color:var(--gold);font-weight:600}
+.ct-bottom{background:linear-gradient(135deg,var(--rose-b),var(--rose-l));padding:20px 24px;text-align:center;color:#fff;font-size:14px;font-weight:600;line-height:1.7}
 
 /* ── WHATS INCLUDED ── */
-.box-section{padding:90px 0;background:linear-gradient(160deg,var(--s1),var(--s2))}
-.box-wrap{background:var(--white);border:2px solid var(--border2);border-radius:24px;overflow:hidden;max-width:900px;margin:0 auto;box-shadow:0 20px 60px rgba(180,60,50,.12)}
+.box-section{padding:96px 0;background:var(--white)}
+.box-wrap{background:var(--cream);border:2px solid var(--border2);border-radius:24px;overflow:hidden;max-width:900px;margin:0 auto;box-shadow:0 20px 64px rgba(180,60,50,.1)}
 .box-head{padding:36px 40px 28px;border-bottom:1px solid var(--border);background:linear-gradient(135deg,var(--s2),var(--s1))}
-.box-head-eye{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:8px}
-.box-head-title{font-family:var(--ff-d);font-size:clamp(20px,3vw,32px);font-weight:400;color:var(--ink2)}
+.box-head-eye{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:10px}
+.box-head-title{font-family:var(--ff-d);font-size:clamp(20px,3vw,34px);font-weight:400;color:var(--ink2)}
 .box-head-title em{font-style:italic;color:var(--rose)}
-.box-body{padding:28px 40px 36px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.box-body{padding:28px 40px 36px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
 @media(max-width:600px){.box-body{grid-template-columns:1fr;padding:20px 22px 28px}.box-head{padding:26px 22px}}
 .box-item{display:flex;align-items:flex-start;gap:12px}
-.box-check{width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,var(--rose-b),var(--rose-l));color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;margin-top:2px}
+.box-check{width:24px;height:24px;border-radius:50%;background:linear-gradient(135deg,var(--rose-b),var(--rose-l));color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:2px}
 .box-item-text{font-size:13.5px;color:var(--text2);line-height:1.7}
-.box-item-text strong{color:var(--ink2);font-weight:600;display:block}
+.box-item-text strong{color:var(--ink2);font-weight:700;display:block;margin-bottom:2px}
 
 /* ── TESTIMONIALS ── */
-.testi-section{padding:90px 0;background:var(--white)}
+.testi-section{padding:96px 0;background:linear-gradient(160deg,var(--s1),var(--s2))}
 .testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-top:48px}
-.testi-card{background:var(--warm);border:1px solid var(--border);border-radius:var(--rl);padding:26px 24px;transition:var(--tr)}
-.testi-card:hover{border-color:var(--border2);transform:translateY(-2px);box-shadow:0 12px 40px rgba(180,60,50,.1)}
-.stars{color:var(--gold-l);font-size:13px;margin-bottom:14px;letter-spacing:2px}
-.testi-text{font-size:14px;color:var(--text2);line-height:1.85;margin-bottom:18px;font-style:italic}
-.testi-text::before{content:'"';font-family:var(--ff-d);font-size:40px;color:var(--rose-xl);line-height:0;vertical-align:-14px;margin-right:2px}
-.testi-author{display:flex;align-items:center;gap:12px}
-.testi-av{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--rose-b),var(--rose-xl));display:flex;align-items:center;justify-content:center;font-family:var(--ff-d);font-size:18px;font-weight:600;color:#fff}
+.testi-card{background:var(--white);border:1px solid var(--border);border-radius:var(--rl);padding:28px 24px;transition:var(--tr);position:relative}
+.testi-card:hover{border-color:var(--border2);transform:translateY(-3px);box-shadow:0 14px 44px rgba(180,60,50,.12)}
+.stars{color:#F0B040;font-size:14px;margin-bottom:14px;letter-spacing:2px}
+.testi-text{font-size:14px;color:var(--text2);line-height:1.9;margin-bottom:18px}
+.testi-text::before{content:'\201C';font-family:var(--ff-d);font-size:52px;color:var(--rose-xl);line-height:0;vertical-align:-18px;margin-right:2px;font-weight:400}
+.testi-author{display:flex;align-items:center;gap:12px;border-top:1px solid var(--border);padding-top:14px;margin-top:14px}
+.testi-av{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--rose-b),var(--rose-xl));display:flex;align-items:center;justify-content:center;font-family:var(--ff-d);font-size:19px;font-weight:600;color:#fff;flex-shrink:0}
 .testi-name{font-size:13px;font-weight:700;color:var(--ink2)}
-.testi-role{font-size:11px;color:var(--text3);margin-top:1px}
+.testi-role{font-size:11.5px;color:var(--text3);margin-top:2px}
 
 /* ── PRICING ── */
-.pricing-section{padding:100px 0;background:linear-gradient(160deg,var(--s1),var(--s2))}
-.price-box{max-width:620px;margin:0 auto;background:var(--white);border:2px solid var(--border2);border-radius:28px;overflow:hidden;box-shadow:0 24px 80px rgba(180,60,50,.15)}
-.price-head{padding:40px 44px 28px;text-align:center;background:linear-gradient(135deg,var(--s2),var(--s1));border-bottom:1px solid var(--border)}
-.price-ribbon{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--rose-b),var(--rose-l));color:#fff;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:6px 18px;border-radius:99px;margin-bottom:16px}
+.pricing-section{padding:100px 0;background:var(--white)}
+.price-box{max-width:620px;margin:0 auto;background:var(--cream);border:2px solid var(--border2);border-radius:28px;overflow:hidden;box-shadow:0 28px 80px rgba(180,60,50,.16)}
+.price-head{padding:40px 44px 28px;text-align:center;background:linear-gradient(135deg,var(--s2) 0%,var(--s1) 60%,#fde8e0 100%);border-bottom:1px solid var(--border)}
+.price-ribbon{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--rose-b),var(--rose-l));color:#fff;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:7px 20px;border-radius:99px;margin-bottom:16px;box-shadow:0 4px 14px var(--rose-glow)}
 .price-name{font-family:var(--ff-d);font-size:28px;font-weight:400;color:var(--ink2);margin-bottom:8px}
 .price-name em{font-style:italic;color:var(--rose)}
-.price-desc{font-size:13px;color:var(--text2);line-height:1.75}
+.price-desc{font-size:13px;color:var(--text2);line-height:1.8}
 .price-body{padding:32px 44px 40px}
 @media(max-width:500px){.price-head{padding:28px 22px}.price-body{padding:24px 22px 32px}}
-.price-row{display:flex;align-items:baseline;justify-content:center;gap:14px;margin-bottom:6px}
-.price-old{font-size:20px;color:var(--text3);text-decoration:line-through;font-weight:300}
-.price-new{font-family:var(--ff-d);font-size:72px;font-weight:600;line-height:1;background:linear-gradient(110deg,var(--rose-b),var(--rose-l),var(--gold-l));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.price-unit{font-size:20px;color:var(--text2);align-self:flex-end;padding-bottom:12px;font-weight:300}
-.price-save{text-align:center;font-size:12px;color:var(--rose);font-weight:700;margin-bottom:24px;background:var(--s2);border:1px solid var(--border2);border-radius:99px;padding:5px 20px;display:inline-block;width:100%}
-.price-feats{display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
-.pf-item{display:flex;align-items:center;gap:10px;font-size:13.5px;color:var(--text2)}
-.pf-check{color:var(--rose);font-size:15px;flex-shrink:0}
-.price-cta{display:block;width:100%;padding:18px;background:linear-gradient(135deg,var(--rose-b),var(--rose-l) 60%,var(--gold-xl) 100%);color:#fff;border:none;border-radius:14px;font-family:var(--ff-b);font-size:16px;font-weight:700;cursor:pointer;text-decoration:none;transition:var(--tr);text-align:center;box-shadow:0 8px 28px var(--rose-glow);margin-bottom:16px;animation:pulse 2.8s ease infinite}
-.price-cta:hover{transform:translateY(-2px);animation:none}
-.price-countdown{text-align:center;font-size:13px;color:var(--text2);margin-bottom:18px;background:var(--warm);border-radius:8px;padding:10px}
-.price-countdown strong{color:var(--rose);font-weight:700}
-.price-note{text-align:center;font-size:12px;color:var(--text3);line-height:2}
-
-/* ── PURCHASE COUNTER ── */
-.purchase-counter{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:20px;background:var(--s1);border:1px solid var(--border2);border-radius:99px;padding:10px 20px}
+.price-koi{display:flex;align-items:center;gap:10px;background:var(--s1);border:1px solid var(--border2);border-radius:10px;padding:12px 16px;margin-bottom:20px;font-size:13px;color:var(--text2);line-height:1.6}
+.price-koi strong{color:var(--rose);font-weight:700}
+.price-row{display:flex;align-items:baseline;justify-content:center;gap:16px;margin-bottom:8px}
+.price-old{font-size:22px;color:var(--text3);text-decoration:line-through;font-weight:300}
+.price-new{font-family:var(--ff-d);font-size:80px;font-weight:600;line-height:1;background:linear-gradient(110deg,var(--rose-b),var(--rose-l),var(--gold-l));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.price-unit{font-size:22px;color:var(--text2);align-self:flex-end;padding-bottom:14px;font-weight:300}
+.price-save{text-align:center;font-size:12.5px;color:var(--rose);font-weight:700;margin-bottom:24px;background:rgba(201,82,74,.08);border:1px solid var(--border2);border-radius:99px;padding:6px 20px;display:inline-block;width:100%}
+.price-countdown{text-align:center;font-size:13px;color:var(--text2);margin-bottom:18px;background:var(--warm);border:1px solid var(--border);border-radius:10px;padding:11px}
+.price-countdown strong{color:var(--rose);font-weight:700;font-family:var(--ff-d);font-size:16px}
+.purchase-counter{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:22px;background:var(--s1);border:1px solid var(--border2);border-radius:99px;padding:10px 20px}
 .pc-avatars{display:flex}
-.pc-av{width:26px;height:26px;border-radius:50%;border:2px solid var(--white);background:linear-gradient(135deg,var(--rose-b),var(--rose-xl));display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;margin-left:-8px;flex-shrink:0}
+.pc-av{width:26px;height:26px;border-radius:50%;border:2px solid var(--cream);background:linear-gradient(135deg,var(--rose-b),var(--rose-xl));display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;margin-left:-8px;flex-shrink:0}
 .pc-av:first-child{margin-left:0}
-.pc-text{font-size:13px;color:var(--text2)}<br>.pc-text strong{color:var(--rose);font-weight:700}
+.pc-text{font-size:13px;color:var(--text2)}
+.pc-text strong{color:var(--rose);font-weight:700}
+.price-feats{display:flex;flex-direction:column;gap:11px;margin-bottom:28px}
+.pf-item{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--text2)}
+.pf-check{color:var(--rose);font-size:16px;flex-shrink:0}
+.price-cta{display:block;width:100%;padding:19px;background:linear-gradient(135deg,var(--rose-b),var(--rose-l) 55%,#e0906e 100%);color:#fff;border:none;border-radius:14px;font-family:var(--ff-b);font-size:17px;font-weight:700;cursor:pointer;text-decoration:none;transition:var(--tr);text-align:center;box-shadow:0 10px 32px var(--rose-glow);margin-bottom:16px;animation:pulse 2.8s ease infinite;letter-spacing:.02em}
+.price-cta:hover{transform:translateY(-2px);animation:none}
+.price-note{text-align:center;font-size:12px;color:var(--text3);line-height:2.1}
 
 /* ── FAQ ── */
-.faq-section{padding:80px 0;background:var(--white)}
-.faq-list{max-width:720px;margin:48px auto 0;display:flex;flex-direction:column;gap:12px}
-.faq-item{border:1px solid var(--border);border-radius:var(--r);overflow:hidden;background:var(--warm);transition:var(--tr)}
-.faq-item.open{border-color:var(--border2)}
-.faq-q{width:100%;padding:18px 20px;display:flex;align-items:center;justify-content:space-between;background:transparent;border:none;cursor:pointer;font-family:var(--ff-b);font-size:14px;font-weight:600;color:var(--ink2);text-align:left;gap:12px}
-.faq-icon{width:22px;height:22px;border-radius:50%;background:var(--s2);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--rose);flex-shrink:0;transition:var(--tr)}
+.faq-section{padding:86px 0;background:var(--s1)}
+.faq-list{max-width:740px;margin:48px auto 0;display:flex;flex-direction:column;gap:12px}
+.faq-item{border:1px solid var(--border);border-radius:var(--r);overflow:hidden;background:var(--white);transition:var(--tr)}
+.faq-item.open{border-color:var(--border2);box-shadow:0 6px 24px rgba(180,60,50,.08)}
+.faq-q{width:100%;padding:18px 20px;display:flex;align-items:center;justify-content:space-between;background:transparent;border:none;cursor:pointer;font-family:var(--ff-b);font-size:14px;font-weight:600;color:var(--ink2);text-align:left;gap:12px;line-height:1.4}
+.faq-icon{width:24px;height:24px;border-radius:50%;background:var(--s2);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--rose);flex-shrink:0;transition:var(--tr)}
 .faq-item.open .faq-icon{transform:rotate(45deg);background:var(--rose-soft)}
-.faq-a{display:none;padding:0 20px 18px;font-size:13.5px;color:var(--text2);line-height:1.8}
+.faq-a{display:none;padding:0 20px 18px;font-size:14px;color:var(--text2);line-height:1.85}
 .faq-item.open .faq-a{display:block}
 
 /* ── POLICY ── */
-.policy-section{padding:60px 0 40px;background:var(--warm);border-top:1px solid var(--border)}
+.policy-section{padding:64px 0 44px;background:var(--warm);border-top:1px solid var(--border)}
 .policy-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-bottom:48px}
-.policy-card{background:var(--white);border:1px solid var(--border);border-radius:var(--rl);padding:26px 22px}
-.policy-icon{font-size:26px;margin-bottom:10px}
-.policy-title{font-size:14px;font-weight:700;color:var(--rose);margin-bottom:12px;text-transform:uppercase;letter-spacing:.05em}
+.policy-card{background:var(--white);border:1px solid var(--border);border-radius:var(--rl);padding:28px 22px;transition:var(--tr)}
+.policy-card:hover{border-color:var(--border2);transform:translateY(-2px)}
+.policy-icon{font-size:28px;margin-bottom:12px}
+.policy-title{font-size:14px;font-weight:700;color:var(--rose);margin-bottom:14px;text-transform:uppercase;letter-spacing:.05em}
 .policy-list{display:flex;flex-direction:column;gap:10px}
-.policy-item{display:flex;gap:8px;align-items:flex-start;font-size:13px;color:var(--text2);line-height:1.65}
+.policy-item{display:flex;gap:8px;align-items:flex-start;font-size:13px;color:var(--text2);line-height:1.7}
 .policy-dot{color:var(--rose-l);font-size:14px;flex-shrink:0;margin-top:1px}
 .company-bar{border-top:1px solid var(--border);padding-top:28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
 .company-label{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--text3);margin-bottom:6px}
-.company-val{font-size:13px;color:var(--text);line-height:1.7}
+.company-val{font-size:13px;color:var(--text);line-height:1.75}
 .company-val strong{font-weight:600;font-size:14px}
 .company-val a{color:var(--rose);text-decoration:none}
 
 /* ── FOOTER ── */
-footer{background:var(--s2);padding:20px;text-align:center;border-top:1px solid var(--border)}
-footer p{font-size:12px;color:var(--text3);line-height:1.9;max-width:600px;margin:0 auto}
+footer{background:var(--s2);padding:22px;text-align:center;border-top:1px solid var(--border)}
+footer p{font-size:12px;color:var(--text3);line-height:2;max-width:600px;margin:0 auto}
 
 /* ── MODAL ── */
-.modal-overlay{position:fixed;inset:0;background:rgba(26,18,16,.7);backdrop-filter:blur(8px);z-index:1000;display:none;align-items:center;justify-content:center;padding:16px}
+.modal-overlay{position:fixed;inset:0;background:rgba(26,18,16,.75);backdrop-filter:blur(10px);z-index:1000;display:none;align-items:center;justify-content:center;padding:16px}
 .modal-overlay.open{display:flex}
-.modal-box{background:var(--white);border-radius:20px;width:100%;max-width:460px;overflow:hidden;box-shadow:0 32px 80px rgba(180,60,50,.2);max-height:90vh;overflow-y:auto}
+.modal-box{background:var(--white);border-radius:20px;width:100%;max-width:460px;overflow:hidden;box-shadow:0 32px 80px rgba(180,60,50,.22);max-height:90vh;overflow-y:auto}
 .modal-head{padding:24px 28px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;background:linear-gradient(135deg,var(--s2),var(--s1))}
 .modal-title{font-family:var(--ff-d);font-size:22px;font-weight:400;color:var(--ink2)}
 .modal-close{width:30px;height:30px;border-radius:50%;background:var(--s2);border:none;cursor:pointer;font-size:16px;color:var(--text2);display:flex;align-items:center;justify-content:center;transition:var(--tr)}
@@ -243,54 +310,57 @@ footer p{font-size:12px;color:var(--text3);line-height:1.9;max-width:600px;margi
 .modal-pkg-name{font-size:12px;color:var(--text2)}
 .modal-pkg-price{font-family:var(--ff-d);font-size:28px;font-weight:600;background:linear-gradient(110deg,var(--rose-b),var(--rose-l));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .modal-body{padding:0 28px 28px}
-.m-label{font-size:12px;font-weight:600;color:var(--ink2);margin-bottom:6px;margin-top:14px;display:block}
-.m-input{width:100%;padding:11px 14px;border:1.5px solid var(--border2);border-radius:8px;font-family:var(--ff-b);font-size:14px;color:var(--ink);background:var(--warm);outline:none;transition:var(--tr)}
+.m-label{font-size:12px;font-weight:700;color:var(--ink2);margin-bottom:6px;margin-top:14px;display:block;letter-spacing:.03em}
+.m-input{width:100%;padding:12px 14px;border:1.5px solid var(--border2);border-radius:9px;font-family:var(--ff-b);font-size:14px;color:var(--ink);background:var(--warm);outline:none;transition:var(--tr)}
 .m-input:focus{border-color:var(--rose-l);background:var(--white)}
-.m-submit{width:100%;padding:15px;background:linear-gradient(135deg,var(--rose-b),var(--rose-l) 60%,var(--gold-xl) 100%);color:#fff;border:none;border-radius:10px;font-family:var(--ff-b);font-size:15px;font-weight:700;cursor:pointer;margin-top:20px;transition:var(--tr);box-shadow:0 6px 20px var(--rose-glow)}
+.m-submit{width:100%;padding:16px;background:linear-gradient(135deg,var(--rose-b),var(--rose-l) 55%,#e0906e 100%);color:#fff;border:none;border-radius:10px;font-family:var(--ff-b);font-size:15px;font-weight:700;cursor:pointer;margin-top:20px;transition:var(--tr);box-shadow:0 6px 20px var(--rose-glow)}
 .m-submit:hover{transform:translateY(-1px)}
-
-/* Step 2 — QR */
 .s2-wrap{padding:20px 28px 28px}
 .s2-title{font-family:var(--ff-d);font-size:20px;color:var(--ink2);margin-bottom:4px}
 .s2-sub{font-size:13px;color:var(--text2);margin-bottom:20px}
 .qr-box{text-align:center;margin-bottom:18px}
-.qr-box img{width:200px;height:200px;border-radius:12px;border:3px solid var(--border2);box-shadow:0 8px 24px rgba(180,60,50,.12)}
+.qr-box img{width:200px;height:200px;border-radius:12px;border:3px solid var(--border2);box-shadow:0 8px 24px rgba(180,60,50,.14)}
 .qr-spinner{display:none;margin:16px auto;width:40px;height:40px;border:3px solid var(--s2);border-top-color:var(--rose-l);border-radius:50%;animation:spin .8s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 .s2-info{background:var(--s1);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:14px;font-size:13px;color:var(--text2)}
-.s2-row{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px dashed var(--border)}
+.s2-row{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px dashed var(--border)}
 .s2-row:last-child{border-bottom:none}
-.s2-val{font-weight:600;color:var(--ink2)}
+.s2-val{font-weight:700;color:var(--ink2)}
 .s2-status{text-align:center;font-size:13px;color:var(--text2);padding:10px;background:var(--warm);border-radius:8px;margin-bottom:12px}
 .s2-status.checking{color:var(--rose)}
-
-/* Step 3 — Success */
-.s3-wrap{padding:28px;text-align:center}
-.s3-icon{font-size:56px;margin-bottom:16px;animation:popIn .5s ease}
-@keyframes popIn{from{transform:scale(0.5);opacity:0}to{transform:scale(1);opacity:1}}
-.s3-title{font-family:var(--ff-d);font-size:26px;color:var(--ink2);margin-bottom:8px}
-.s3-sub{font-size:14px;color:var(--text2);line-height:1.8;margin-bottom:24px}
-.s3-btn{display:block;width:100%;padding:15px;background:linear-gradient(135deg,var(--rose-b),var(--rose-l));color:#fff;border:none;border-radius:10px;font-family:var(--ff-b);font-size:15px;font-weight:700;text-decoration:none;margin-bottom:10px;cursor:pointer;transition:var(--tr);text-align:center}
+.s3-wrap{padding:32px;text-align:center}
+.s3-icon{font-size:60px;margin-bottom:16px;animation:popIn .5s ease}
+@keyframes popIn{from{transform:scale(.5);opacity:0}to{transform:scale(1);opacity:1}}
+.s3-title{font-family:var(--ff-d);font-size:28px;color:var(--ink2);margin-bottom:8px}
+.s3-sub{font-size:14px;color:var(--text2);line-height:1.85;margin-bottom:24px}
+.s3-btn{display:block;width:100%;padding:16px;background:linear-gradient(135deg,var(--rose-b),var(--rose-l));color:#fff;border:none;border-radius:10px;font-family:var(--ff-b);font-size:15px;font-weight:700;text-decoration:none;margin-bottom:10px;cursor:pointer;transition:var(--tr);text-align:center}
 .s3-btn:hover{transform:translateY(-1px)}
-.s3-note{font-size:12px;color:var(--text3);line-height:1.8}
+.s3-note{font-size:12px;color:var(--text3);line-height:1.9}
 
 /* ── STICKY BUY BAR ── */
-.sticky-bar{position:fixed;bottom:0;left:0;right:0;z-index:150;background:rgba(255,253,249,.97);backdrop-filter:blur(12px);border-top:1px solid var(--border);padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:14px;box-shadow:0 -4px 24px rgba(180,60,50,.1);transform:translateY(100%);transition:transform .35s ease}
+.sticky-bar{position:fixed;bottom:0;left:0;right:0;z-index:150;background:rgba(255,253,249,.97);backdrop-filter:blur(14px);border-top:1px solid var(--border);padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:14px;box-shadow:0 -4px 24px rgba(180,60,50,.1);transform:translateY(100%);transition:transform .35s ease}
 .sticky-bar.show{transform:translateY(0)}
 .sb-left{min-width:0;flex:1}
 .sb-title{font-size:13px;font-weight:700;color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.sb-price{font-family:var(--ff-d);font-size:20px;font-weight:600;color:var(--rose);line-height:1}
-.sb-cta{flex-shrink:0;white-space:nowrap;padding:12px 24px;background:linear-gradient(135deg,var(--rose-b),var(--rose-l));color:#fff;border:none;border-radius:99px;font-family:var(--ff-b);font-size:13px;font-weight:700;cursor:pointer;box-shadow:0 4px 16px var(--rose-glow);transition:var(--tr)}
+.sb-price{font-family:var(--ff-d);font-size:22px;font-weight:600;color:var(--rose);line-height:1}
+.sb-cta{flex-shrink:0;white-space:nowrap;padding:13px 28px;background:linear-gradient(135deg,var(--rose-b),var(--rose-l));color:#fff;border:none;border-radius:99px;font-family:var(--ff-b);font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 4px 16px var(--rose-glow);transition:var(--tr)}
 .sb-cta:hover{transform:translateY(-1px)}
 
 /* ── RESPONSIVE ── */
 @media(max-width:768px){
   body{overflow-x:hidden}
-  .hero{padding:70px 16px 52px}
+  .hero{padding:72px 16px 52px}
   .container{padding:0 16px}
-  .proof-inner{gap:20px}
-  .step-grid{grid-template-columns:1fr}
+  .tool-inner{gap:36px}
+  .step-grid::before{display:none}
   .sticky-bar{padding:10px 16px}
+  .price-body{padding:24px 20px 32px}
+}
+@media(max-width:480px){
+  .compare-table{font-size:12px}
+  .ct-head,.ct-row{grid-template-columns:1.2fr 1fr 1fr}
+  .ct-feature{padding:12px 10px;font-size:12px}
+  .ct-cell{padding:12px 8px;font-size:12px}
 }
 </style>
 </head>
@@ -298,20 +368,19 @@ footer p{font-size:12px;color:var(--text3);line-height:1.9;max-width:600px;margi
 
 <!-- URGENCY BAR -->
 <div class="urgency-bar">
-  🔥 Ưu đãi ra mắt kết thúc sau
-  <span>—</span>
+  🔥 Ưu đãi ra mắt — còn
   <span class="cd-inline">
     <span class="cd-block-sm" id="ub-h">24</span>:<span class="cd-block-sm" id="ub-m">00</span>:<span class="cd-block-sm" id="ub-s">00</span>
   </span>
-  <span>—</span> Giá <strong>199k</strong> thay vì 399k
+  <span>·</span> Giá <strong>199k</strong> thay vì 399k · Dùng vĩnh viễn không giới hạn
 </div>
 
 <!-- HEADER -->
 <header class="hdr">
   <div class="hdr-logo">Femme Studio</div>
   <div class="hdr-right">
-    <div class="hdr-count">🔥 <strong id="hdr-buyers">89</strong> người đã mua</div>
-    <button class="hdr-cta" onclick="openModal()">Sở hữu ngay — 199k</button>
+    <div class="hdr-count">✨ <strong id="hdr-buyers">89</strong> người đã sở hữu</div>
+    <button class="hdr-cta" onclick="openModal()">Mua ngay — 199k</button>
   </div>
 </header>
 
@@ -319,52 +388,59 @@ footer p{font-size:12px;color:var(--text3);line-height:1.9;max-width:600px;margi
 <section class="hero" id="top">
   <div class="hero-orb1"></div>
   <div class="hero-orb2"></div>
+  <div class="hero-dots"></div>
   <div class="hero-inner">
     <div class="hero-left">
-      <div class="hero-badge">✦ Ra mắt 2026 · Giới hạn 200 bộ</div>
-      <h1 class="hero-h1">Ảnh Profile Đẹp<br><em>Như Chụp Studio</em></h1>
+      <div class="hero-badge">✦ Tool AI tạo ảnh profile nữ chuyên nghiệp · Ra mắt 2026</div>
+      <h1 class="hero-h1">Ảnh Profile Đẹp<br>Hơn Chụp Studio<br><em>Chi Phí 2 Ly Trà Sữa</em></h1>
       <p class="hero-sub">
-        Không cần máy ảnh đắt tiền. Không cần photoshop. Không cần đặt lịch chụp hình.<br><br>
-        Chỉ cần <strong>copy 1 đoạn prompt → dán vào AI</strong> — ảnh profile chuyên nghiệp của bạn sẽ xuất hiện trong 5 phút.
+        Bạn không cần đặt lịch, không cần đến studio, không cần biết chỉnh sửa ảnh.<br><br>
+        Chỉ cần <strong>mở tool → chọn phong cách bạn muốn</strong> — tool sẽ tự tạo ra câu prompt hoàn chỉnh. Copy → paste vào AI + upload 1 tấm ảnh thật của bạn → <strong>ảnh profile chuyên nghiệp, giống bạn đến 99%</strong>, đẹp hơn cả chụp studio thật.
       </p>
+      <div class="hero-koi">
+        <span class="koi-icon">🧋</span>
+        <span>Tạo <strong>không giới hạn</strong> số ảnh. Chia sẻ cho bạn bè, chị em, cả gia đình cùng dùng. Đầu tư <strong>một lần — dùng cả đời.</strong></span>
+      </div>
       <div class="hero-cta-group">
-        <button class="btn-main" onclick="openModal()">✨ Sở hữu ngay — 199k</button>
+        <button class="btn-main" onclick="openModal()">✨ Sở hữu ngay — Chỉ 199k</button>
         <a href="#gallery" class="btn-ghost">Xem ảnh mẫu →</a>
       </div>
       <div class="hero-trust">
-        <div class="trust-item"><span class="trust-dot"></span>89 khách hàng đã mua</div>
-        <div class="trust-item"><span class="trust-dot"></span>Nhận file ngay sau thanh toán</div>
+        <div class="trust-item"><span class="trust-dot"></span>89 người đã mua</div>
+        <div class="trust-item"><span class="trust-dot"></span>Nhận tool ngay sau thanh toán</div>
         <div class="trust-item"><span class="trust-dot"></span>Hóa đơn VAT điện tử</div>
       </div>
     </div>
     <div class="hero-right">
-      <div class="before-after">
-        <div class="ba-card">
-          <div class="ba-top">
-            <div class="ba-img">
-              <div class="ba-placeholder"><span>🤳</span></div>
-              <span class="ba-label before">Ảnh selfie thường</span>
+      <div class="tool-mockup">
+        <div class="tm-header">
+          <div class="tm-dots">
+            <div class="tm-dot tm-dot1"></div>
+            <div class="tm-dot tm-dot2"></div>
+            <div class="tm-dot tm-dot3"></div>
+          </div>
+          <div class="tm-title">✨ Femme Studio — Tool Tạo Prompt AI</div>
+        </div>
+        <div class="tm-body">
+          <div class="tm-label">🎨 Phong cách hình ảnh</div>
+          <div class="tm-select"><div class="tm-select-val">✦ Business Professional</div><span class="tm-chevron">▾</span></div>
+          <div class="tm-options-row">
+            <div>
+              <div class="tm-label">🏞 Bối cảnh</div>
+              <div class="tm-select" style="margin-bottom:0"><div class="tm-select-val" style="font-size:12px">Văn phòng hiện đại</div><span class="tm-chevron">▾</span></div>
             </div>
-            <div class="ba-img">
-              <div class="ba-placeholder"><span>✨</span></div>
-              <span class="ba-label after">Sau khi dùng prompt</span>
+            <div>
+              <div class="tm-label">🌈 Màu nền</div>
+              <div class="tm-select" style="margin-bottom:0"><div class="tm-select-val" style="font-size:12px">Trắng tinh khôi</div><span class="tm-chevron">▾</span></div>
             </div>
           </div>
-          <div class="ba-footer">
-            <div class="ba-stat">
-              <div class="ba-stat-num">5'</div>
-              <div class="ba-stat-lbl">Thời gian tạo ảnh</div>
-            </div>
-            <div class="ba-divider"></div>
-            <div class="ba-stat">
-              <div class="ba-stat-num">0đ</div>
-              <div class="ba-stat-lbl">Chi phí chụp studio</div>
-            </div>
-            <div class="ba-divider"></div>
-            <div class="ba-stat">
-              <div class="ba-stat-num">50+</div>
-              <div class="ba-stat-lbl">Phong cách prompt</div>
-            </div>
+          <div style="height:12px"></div>
+          <div class="tm-label">👗 Phong cách trang phục</div>
+          <div class="tm-select"><div class="tm-select-val">Vest thanh lịch, tông trung tính</div><span class="tm-chevron">▾</span></div>
+          <button class="tm-btn">✨ Tạo Prompt Ngay</button>
+          <div class="tm-output">
+            <div class="tm-output-label">📋 Prompt của bạn — sẵn sàng copy<span style="float:right;font-size:10px;background:var(--white);border:1px solid var(--border2);border-radius:4px;padding:2px 8px;color:var(--rose);cursor:pointer">Copy ✓</span></div>
+            <div class="tm-output-text">A professional headshot of a Vietnamese woman in her 30s, wearing an elegant neutral-toned blazer, white background studio lighting, soft natural skin...</div>
           </div>
         </div>
       </div>
@@ -377,12 +453,12 @@ footer p{font-size:12px;color:var(--text3);line-height:1.9;max-width:600px;margi
   <div class="proof-inner container">
     <div class="proof-item">
       <div class="proof-num" id="buyers-count">89</div>
-      <div class="proof-lbl">khách đã mua</div>
+      <div class="proof-lbl">người đã sở hữu tool</div>
     </div>
     <div class="proof-sep"></div>
     <div class="proof-item">
-      <div class="proof-num">50+</div>
-      <div class="proof-lbl">phong cách prompt</div>
+      <div class="proof-num">∞</div>
+      <div class="proof-lbl">ảnh tạo không giới hạn</div>
     </div>
     <div class="proof-sep"></div>
     <div class="proof-item">
@@ -392,7 +468,7 @@ footer p{font-size:12px;color:var(--text3);line-height:1.9;max-width:600px;margi
     <div class="proof-sep"></div>
     <div class="proof-item">
       <div class="proof-num">&lt;5'</div>
-      <div class="proof-lbl">tạo xong 1 ảnh</div>
+      <div class="proof-lbl">tạo xong 1 ảnh đẹp</div>
     </div>
   </div>
 </div>
@@ -401,28 +477,138 @@ footer p{font-size:12px;color:var(--text3);line-height:1.9;max-width:600px;margi
 <section class="pain-section">
   <div class="container">
     <p class="s-eye">Bạn có đang gặp phải</p>
-    <h2 class="s-title">Vì sao ảnh profile của bạn<br><em class="text-rose">chưa tạo được ấn tượng?</em></h2>
-    <p class="s-sub">Ảnh profile là "bộ mặt" đầu tiên người khác thấy — nhưng đây là những lý do khiến nó chưa đủ tốt</p>
+    <h2 class="s-title">Bạn xứng đáng có bộ ảnh đẹp —<br><em class="text-rose">nhưng tại sao vẫn chưa có?</em></h2>
+    <p class="s-sub">Ảnh profile là ấn tượng đầu tiên người khác nhìn thấy bạn. Đây là những lý do khiến bạn chưa có bộ ảnh như ý</p>
     <div class="pain-grid">
       <div class="pain-card">
-        <div class="pain-emoji">📸</div>
-        <div class="pain-title">Chụp studio quá đắt & mất thời gian</div>
-        <div class="pain-text">500k-2 triệu mỗi lần chụp, phải đặt lịch trước cả tuần, di chuyển, trang điểm... chỉ để có vài tấm ảnh dùng 1-2 năm.</div>
+        <div class="pain-emoji">💸</div>
+        <div class="pain-title">Chụp studio quá đắt, quá phức tạp</div>
+        <div class="pain-text">500k–2 triệu mỗi lần chụp, phải đặt lịch trước cả tuần, di chuyển, trang điểm, chờ đợi... chỉ để có vài tấm ảnh mà khi ra xem chưa chắc đã ưng.</div>
       </div>
       <div class="pain-card">
         <div class="pain-emoji">🤳</div>
-        <div class="pain-title">Tự chụp selfie nhìn vào không dám đăng</div>
-        <div class="pain-text">Ánh sáng tệ, góc chụp không đẹp, nhìn không chuyên nghiệp. Bạn biết ảnh chưa tốt nhưng không biết làm sao cải thiện.</div>
+        <div class="pain-title">Tự selfie — nhìn vào không dám đăng</div>
+        <div class="pain-text">Ánh sáng tệ, góc chụp không đẹp, background lộn xộn. Bạn biết ảnh chưa tốt nhưng không biết làm sao để có ảnh chuyên nghiệp hơn.</div>
       </div>
       <div class="pain-card">
-        <div class="pain-emoji">😔</div>
-        <div class="pain-title">Ảnh cũ, không phản ánh đúng phong cách hiện tại</div>
-        <div class="pain-text">Ảnh trên LinkedIn, CV, Facebook đã cũ vài năm. Bạn biết cần thay nhưng không muốn tốn thời gian và tiền để chụp lại.</div>
+        <div class="pain-emoji">😕</div>
+        <div class="pain-title">Ra studio rồi vẫn không vừa ý</div>
+        <div class="pain-text">Tốn tiền, tốn thời gian đến studio nhưng kết quả không như hình mẫu. Phong cách không đúng, ánh sáng không chuẩn — không thể làm lại vì tốn kém quá.</div>
       </div>
       <div class="pain-card">
         <div class="pain-emoji">💼</div>
-        <div class="pain-title">Ảnh kém chuyên nghiệp ảnh hưởng cơ hội việc làm</div>
-        <div class="pain-text">Nhà tuyển dụng, đối tác nhìn vào ảnh profile trước khi quyết định liên hệ. Ảnh không tốt = cơ hội bị bỏ lỡ.</div>
+        <div class="pain-title">Ảnh kém chuyên nghiệp = mất cơ hội</div>
+        <div class="pain-text">LinkedIn, CV, Facebook — người ta nhìn ảnh profile trước khi quyết định liên hệ bạn. Ảnh không tốt đang làm bạn mất đi cơ hội mà bạn không hay biết.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOL FEATURES SECTION -->
+<section class="tool-section" id="tool">
+  <div class="tool-inner">
+    <div class="tool-text-side">
+      <div class="tool-eyebrow">Đây không phải bộ prompt tĩnh</div>
+      <h2 class="tool-h2">Tool tương tác —<br><em>Bạn chọn, AI tạo</em><br>Không giới hạn</h2>
+      <p class="tool-desc">
+        Femme Studio là <strong>tool HTML chạy trên trình duyệt</strong> — bạn tự tùy chỉnh mọi thứ theo ý muốn và tool tự động tạo ra câu prompt hoàn chỉnh, tối ưu cho AI.<br><br>
+        Không giới hạn số lần tạo. Mỗi ngày muốn ảnh phong cách khác — chỉ cần chọn lại và tạo. <strong>Dùng được mãi mãi.</strong>
+      </p>
+      <div class="tool-options">
+        <div class="tool-opt">
+          <span class="tool-opt-icon">🎨</span>
+          <div>
+            <div class="tool-opt-name">Phong cách ảnh</div>
+            <div class="tool-opt-val">Business, Natural, Elegant, Editorial...</div>
+          </div>
+        </div>
+        <div class="tool-opt">
+          <span class="tool-opt-icon">🌈</span>
+          <div>
+            <div class="tool-opt-name">Màu nền</div>
+            <div class="tool-opt-val">20+ màu từ trắng đến gradient</div>
+          </div>
+        </div>
+        <div class="tool-opt">
+          <span class="tool-opt-icon">👗</span>
+          <div>
+            <div class="tool-opt-name">Trang phục</div>
+            <div class="tool-opt-val">Vest, áo dài, business casual...</div>
+          </div>
+        </div>
+        <div class="tool-opt">
+          <span class="tool-opt-icon">🏞</span>
+          <div>
+            <div class="tool-opt-name">Bối cảnh</div>
+            <div class="tool-opt-val">Văn phòng, ngoài trời, studio...</div>
+          </div>
+        </div>
+        <div class="tool-opt">
+          <span class="tool-opt-icon">✨</span>
+          <div>
+            <div class="tool-opt-name">Ánh sáng & tông màu</div>
+            <div class="tool-opt-val">Soft, warm, cool, dramatic...</div>
+          </div>
+        </div>
+        <div class="tool-opt">
+          <span class="tool-opt-icon">💫</span>
+          <div>
+            <div class="tool-opt-name">Cảm xúc & thần thái</div>
+            <div class="tool-opt-val">Confident, soft, playful, elegant...</div>
+          </div>
+        </div>
+      </div>
+      <button class="btn-main" onclick="openModal()">✨ Sở hữu Tool — Chỉ 199k</button>
+    </div>
+    <div>
+      <div class="tool-bigmock">
+        <div class="tbm-head">
+          <div class="tbm-head-title">✨ Femme Studio — Tùy chỉnh ảnh của bạn</div>
+        </div>
+        <div class="tbm-grid">
+          <div class="tbm-field">
+            <div class="tbm-flabel">Phong cách</div>
+            <div class="tbm-fval">Business Pro <span class="tbm-fchevron">▾</span></div>
+          </div>
+          <div class="tbm-field">
+            <div class="tbm-flabel">Màu nền</div>
+            <div class="tbm-fval">Trắng tinh <span class="tbm-fchevron">▾</span></div>
+          </div>
+          <div class="tbm-field">
+            <div class="tbm-flabel">Trang phục</div>
+            <div class="tbm-fval">Vest thanh lịch <span class="tbm-fchevron">▾</span></div>
+          </div>
+          <div class="tbm-field">
+            <div class="tbm-flabel">Bối cảnh</div>
+            <div class="tbm-fval">Văn phòng <span class="tbm-fchevron">▾</span></div>
+          </div>
+          <div class="tbm-field">
+            <div class="tbm-flabel">Ánh sáng</div>
+            <div class="tbm-fval">Soft natural <span class="tbm-fchevron">▾</span></div>
+          </div>
+          <div class="tbm-field">
+            <div class="tbm-flabel">Thần thái</div>
+            <div class="tbm-fval">Confident <span class="tbm-fchevron">▾</span></div>
+          </div>
+        </div>
+        <div class="tbm-btn-row">
+          <button class="tbm-genbtn">✨ Tạo Prompt Ngay</button>
+        </div>
+        <div class="tbm-result">
+          <div class="tbm-rlabel">
+            📋 Prompt sẵn sàng dùng
+            <span class="tbm-copy">Copy ✓</span>
+          </div>
+          <div class="tbm-prompt">A professional headshot of a beautiful Vietnamese woman, elegant neutral-toned blazer, soft natural studio lighting, clean white background, confident warm expression, sharp focus, photorealistic, 8K quality, suitable for LinkedIn profile...</div>
+        </div>
+      </div>
+      <div style="margin-top:14px;text-align:center">
+        <p style="font-size:12px;color:var(--text3);font-style:italic">Sau khi copy prompt → dán vào Gemini hoặc Nano Banana Pro + upload 1 ảnh thật của bạn</p>
+        <div style="display:flex;justify-content:center;gap:10px;margin-top:10px">
+          <span style="background:var(--white);border:1px solid var(--border2);border-radius:99px;padding:5px 14px;font-size:11.5px;color:var(--rose);font-weight:600">✦ Gemini</span>
+          <span style="background:var(--white);border:1px solid var(--border2);border-radius:99px;padding:5px 14px;font-size:11.5px;color:var(--rose);font-weight:600">✦ Nano Banana Pro</span>
+          <span style="background:var(--white);border:1px solid var(--border2);border-radius:99px;padding:5px 14px;font-size:11.5px;color:var(--rose);font-weight:600">✦ ChatGPT</span>
+        </div>
       </div>
     </div>
   </div>
@@ -432,35 +618,71 @@ footer p{font-size:12px;color:var(--text3);line-height:1.9;max-width:600px;margi
 <section class="gallery-section" id="gallery">
   <div class="container">
     <p class="s-eye">Kết quả thực tế</p>
-    <h2 class="s-title">Ảnh tạo ra từ<br><em class="text-rose">bộ prompt này</em></h2>
-    <p class="s-sub">Tất cả đều được tạo bằng AI — không qua chỉnh sửa thêm. Kết quả tùy thuộc vào ảnh gốc và phong cách bạn chọn.</p>
+    <h2 class="s-title">12 Ảnh Profile Tạo Ra<br><em class="text-rose">Bằng Tool Này</em></h2>
+    <p class="s-sub" style="color:rgba(255,255,255,.55)">Tất cả đều được tạo bằng AI từ ảnh selfie thông thường — không qua chỉnh sửa thêm. Bạn có thể tạo hàng trăm phong cách như thế này.</p>
     <div class="gallery-grid">
       <div class="g-card">
-        <div class="g-placeholder"><span class="g-placeholder-icon">👩‍💼</span><span class="g-placeholder-text">Business Professional</span></div>
+        <img src="images/photo-01.png" alt="Business Professional" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="g-placeholder" style="display:none"><span class="g-placeholder-icon">👩‍💼</span><span class="g-placeholder-text">Business Professional</span></div>
         <div class="g-overlay"><span class="g-tag">Business Professional</span></div>
       </div>
       <div class="g-card">
-        <div class="g-placeholder"><span class="g-placeholder-icon">🌸</span><span class="g-placeholder-text">Soft Natural</span></div>
+        <img src="images/photo-02.png" alt="Soft Natural" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="g-placeholder" style="display:none"><span class="g-placeholder-icon">🌸</span><span class="g-placeholder-text">Soft Natural</span></div>
         <div class="g-overlay"><span class="g-tag">Soft Natural</span></div>
       </div>
       <div class="g-card">
-        <div class="g-placeholder"><span class="g-placeholder-icon">✨</span><span class="g-placeholder-text">Studio Elegant</span></div>
+        <img src="images/photo-03.png" alt="Studio Elegant" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="g-placeholder" style="display:none"><span class="g-placeholder-icon">✨</span><span class="g-placeholder-text">Studio Elegant</span></div>
         <div class="g-overlay"><span class="g-tag">Studio Elegant</span></div>
       </div>
       <div class="g-card">
-        <div class="g-placeholder"><span class="g-placeholder-icon">🎨</span><span class="g-placeholder-text">Creative Editorial</span></div>
+        <img src="images/photo-04.png" alt="Creative Editorial" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="g-placeholder" style="display:none"><span class="g-placeholder-icon">🎨</span><span class="g-placeholder-text">Creative Editorial</span></div>
         <div class="g-overlay"><span class="g-tag">Creative Editorial</span></div>
       </div>
       <div class="g-card">
-        <div class="g-placeholder"><span class="g-placeholder-icon">🌿</span><span class="g-placeholder-text">Minimal Clean</span></div>
+        <img src="images/photo-05.png" alt="Áo Dài Truyền Thống" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="g-placeholder" style="display:none"><span class="g-placeholder-icon">🌺</span><span class="g-placeholder-text">Áo Dài Truyền Thống</span></div>
+        <div class="g-overlay"><span class="g-tag">Áo Dài Truyền Thống</span></div>
+      </div>
+      <div class="g-card">
+        <img src="images/photo-06.png" alt="Minimal Clean" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="g-placeholder" style="display:none"><span class="g-placeholder-icon">🌿</span><span class="g-placeholder-text">Minimal Clean</span></div>
         <div class="g-overlay"><span class="g-tag">Minimal Clean</span></div>
       </div>
       <div class="g-card">
-        <div class="g-placeholder"><span class="g-placeholder-icon">💫</span><span class="g-placeholder-text">Lifestyle Casual</span></div>
-        <div class="g-overlay"><span class="g-tag">Lifestyle Casual</span></div>
+        <img src="images/photo-07.png" alt="Outdoor Natural Light" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="g-placeholder" style="display:none"><span class="g-placeholder-icon">☀️</span><span class="g-placeholder-text">Outdoor Natural Light</span></div>
+        <div class="g-overlay"><span class="g-tag">Outdoor Natural Light</span></div>
+      </div>
+      <div class="g-card">
+        <img src="images/photo-08.png" alt="Luxury Editorial" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="g-placeholder" style="display:none"><span class="g-placeholder-icon">💎</span><span class="g-placeholder-text">Luxury Editorial</span></div>
+        <div class="g-overlay"><span class="g-tag">Luxury Editorial</span></div>
+      </div>
+      <div class="g-card">
+        <img src="images/photo-09.png" alt="Casual Lifestyle" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="g-placeholder" style="display:none"><span class="g-placeholder-icon">💫</span><span class="g-placeholder-text">Casual Lifestyle</span></div>
+        <div class="g-overlay"><span class="g-tag">Casual Lifestyle</span></div>
+      </div>
+      <div class="g-card">
+        <img src="images/photo-10.png" alt="Warm Bokeh" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="g-placeholder" style="display:none"><span class="g-placeholder-icon">🌷</span><span class="g-placeholder-text">Warm Bokeh</span></div>
+        <div class="g-overlay"><span class="g-tag">Warm Bokeh</span></div>
+      </div>
+      <div class="g-card">
+        <img src="images/photo-11.png" alt="Corporate Leadership" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="g-placeholder" style="display:none"><span class="g-placeholder-icon">👑</span><span class="g-placeholder-text">Corporate Leadership</span></div>
+        <div class="g-overlay"><span class="g-tag">Corporate Leadership</span></div>
+      </div>
+      <div class="g-card">
+        <img src="images/photo-12.png" alt="Artistic Portrait" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="g-placeholder" style="display:none"><span class="g-placeholder-icon">🎭</span><span class="g-placeholder-text">Artistic Portrait</span></div>
+        <div class="g-overlay"><span class="g-tag">Artistic Portrait</span></div>
       </div>
     </div>
-    <p class="gallery-note">* Upload ảnh mẫu thực tế vào thư mục <code>images/</code> trên GitHub để hiển thị tại đây</p>
+    <p class="gallery-note">✦ Ảnh trên được tạo từ ảnh selfie thông thường bằng tool này · Kết quả giống bạn đến 99% · Tạo không giới hạn số phong cách</p>
   </div>
 </section>
 
@@ -468,36 +690,91 @@ footer p{font-size:12px;color:var(--text3);line-height:1.9;max-width:600px;margi
 <section class="howto-section" id="howto">
   <div class="container">
     <p class="s-eye">Đơn giản đến bất ngờ</p>
-    <h2 class="s-title">3 bước — 5 phút —<br><em class="text-rose">ảnh đẹp như studio</em></h2>
+    <h2 class="s-title">4 Bước — 5 Phút —<br><em class="text-rose">Ảnh Đẹp Hơn Studio</em></h2>
+    <p class="s-sub">Không cần biết về AI, không cần kỹ năng chỉnh sửa. Chỉ cần làm theo 4 bước này.</p>
     <div class="step-grid">
       <div class="step-card">
-        <div class="step-top">
-          <div class="step-num">1</div>
-          <div class="step-title">Mở bộ prompt, chọn phong cách</div>
-          <div class="step-text">Sau khi thanh toán, bạn nhận file HTML chứa 50+ prompt được phân loại rõ ràng: Business, Natural, Elegant, Editorial... Chọn phong cách phù hợp với mục đích sử dụng.</div>
-        </div>
-        <div class="step-bottom">
-          <div class="step-tag">✦ Phân loại theo mục đích sử dụng</div>
+        <div class="step-num">1</div>
+        <div class="step-icon">🛒</div>
+        <div class="step-title">Mua tool — nhận ngay</div>
+        <div class="step-text">Thanh toán 199k, hệ thống tự động gửi link tool về email trong 1–3 phút. Mở trên bất kỳ trình duyệt nào.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <div class="step-icon">🎨</div>
+        <div class="step-title">Chọn phong cách bạn muốn</div>
+        <div class="step-text">Trong tool, bạn chọn: màu nền, trang phục, phong cách, bối cảnh, ánh sáng, cảm xúc... Tool tự tạo prompt hoàn chỉnh.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <div class="step-icon">🤖</div>
+        <div class="step-title">Paste vào AI + upload ảnh</div>
+        <div class="step-text">Copy prompt → mở Gemini hoặc Nano Banana Pro → paste prompt + upload 1 tấm ảnh thật của bạn → AI xử lý.</div>
+        <div class="step-compat">
+          <span class="step-compat-tag">Gemini</span>
+          <span class="step-compat-tag">Nano Banana Pro</span>
+          <span class="step-compat-tag">ChatGPT</span>
         </div>
       </div>
       <div class="step-card">
-        <div class="step-top">
-          <div class="step-num">2</div>
-          <div class="step-title">Copy prompt → Dán vào AI cùng ảnh của bạn</div>
-          <div class="step-text">Mở Gemini, ChatGPT hoặc Midjourney. Dán prompt đã chọn + upload ảnh selfie của bạn. AI sẽ xử lý và tạo ra ảnh profile mới trong vài giây.</div>
-        </div>
-        <div class="step-bottom">
-          <div class="step-tag">✦ Tương thích Gemini · ChatGPT · Midjourney</div>
-        </div>
+        <div class="step-num">4</div>
+        <div class="step-icon">✨</div>
+        <div class="step-title">Tải về & lặp lại tùy thích</div>
+        <div class="step-text">Ảnh giống bạn 99% — chỉ đẹp hơn, chuyên nghiệp hơn. Muốn thêm phong cách? Quay lại bước 2 và tạo không giới hạn.</div>
       </div>
-      <div class="step-card">
-        <div class="step-top">
-          <div class="step-num">3</div>
-          <div class="step-title">Tải ảnh về, dùng ngay</div>
-          <div class="step-text">Ảnh AI tạo ra giữ được khuôn mặt, đường nét của bạn — chỉ được nâng cấp về ánh sáng, nền, trang phục và tổng thể. Tải về và dùng ngay trên LinkedIn, Facebook, CV.</div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON -->
+<section class="compare-section">
+  <div class="container">
+    <p class="s-eye">So sánh thực tế</p>
+    <h2 class="s-title">Tool AI vs Chụp Studio —<br><em class="text-rose">Sự khác biệt rõ ràng</em></h2>
+    <div class="compare-wrap">
+      <div class="compare-table">
+        <div class="ct-head">
+          <div class="ct-head-cell"></div>
+          <div class="ct-head-cell">📷 Studio truyền thống</div>
+          <div class="ct-head-cell tool-col">✨ Femme Studio Tool<span>Chỉ 199k · Dùng mãi</span></div>
         </div>
-        <div class="step-bottom">
-          <div class="step-tag">✦ Giống bạn — chỉ đẹp hơn nhiều</div>
+        <div class="ct-row">
+          <div class="ct-feature">💰 Chi phí</div>
+          <div class="ct-cell bad">500k – 2.000k / lần</div>
+          <div class="ct-cell good">199k một lần duy nhất</div>
+        </div>
+        <div class="ct-row">
+          <div class="ct-feature">⏰ Thời gian</div>
+          <div class="ct-cell bad">Nửa ngày – cả ngày</div>
+          <div class="ct-cell good">5 phút / ảnh</div>
+        </div>
+        <div class="ct-row">
+          <div class="ct-feature">📅 Đặt lịch trước</div>
+          <div class="ct-cell bad">Vài ngày – cả tuần</div>
+          <div class="ct-cell good">Không cần đặt lịch</div>
+        </div>
+        <div class="ct-row">
+          <div class="ct-feature">🎨 Số phong cách</div>
+          <div class="ct-cell bad">3–5 phong cách / lần</div>
+          <div class="ct-cell good">Không giới hạn</div>
+        </div>
+        <div class="ct-row">
+          <div class="ct-feature">🔄 Làm lại nếu không ưng</div>
+          <div class="ct-cell bad">Phải trả thêm tiền</div>
+          <div class="ct-cell good">Miễn phí, bao nhiêu lần cũng được</div>
+        </div>
+        <div class="ct-row">
+          <div class="ct-feature">👥 Chia sẻ cho người khác</div>
+          <div class="ct-cell bad">Không được</div>
+          <div class="ct-cell good">Cả gia đình cùng dùng</div>
+        </div>
+        <div class="ct-row">
+          <div class="ct-feature">📱 Cần thiết bị gì</div>
+          <div class="ct-cell bad">Phải đến tận nơi</div>
+          <div class="ct-cell good">Chỉ cần điện thoại</div>
+        </div>
+        <div class="ct-bottom">
+          🧋 Chi phí chỉ bằng 2 ly trà sữa KOI — nhưng có ảnh đẹp như studio, tạo mãi không giới hạn
         </div>
       </div>
     </div>
@@ -508,21 +785,21 @@ footer p{font-size:12px;color:var(--text3);line-height:1.9;max-width:600px;margi
 <section class="box-section" id="included">
   <div class="container">
     <p class="s-eye">Bạn nhận được gì</p>
-    <h2 class="s-title">Toàn bộ những gì có trong<br><em class="text-rose">Femme Studio</em></h2>
+    <h2 class="s-title">Toàn bộ bên trong<br><em class="text-rose">Femme Studio Tool</em></h2>
     <div class="box-wrap">
       <div class="box-head">
-        <div class="box-head-eye">Femme Studio · Bộ Prompt AI Ảnh Profile</div>
-        <div class="box-head-title">File HTML tương tác — <em>50+ prompt sẵn dùng ngay</em></div>
+        <div class="box-head-eye">Femme Studio · Tool Tương Tác Tạo Prompt AI Ảnh Profile</div>
+        <div class="box-head-title">File HTML chạy trên trình duyệt — <em>Dùng mãi, không giới hạn</em></div>
       </div>
       <div class="box-body">
-        <div class="box-item"><div class="box-check">✓</div><div class="box-item-text"><strong>50+ prompt chuyên nghiệp</strong>Được viết và tối ưu riêng cho ảnh profile nữ</div></div>
-        <div class="box-item"><div class="box-check">✓</div><div class="box-item-text"><strong>Phân loại theo mục đích</strong>Business, LinkedIn, Social Media, Dating, CV...</div></div>
-        <div class="box-item"><div class="box-check">✓</div><div class="box-item-text"><strong>Hướng dẫn sử dụng chi tiết</strong>Từng bước cho Gemini, ChatGPT, Midjourney</div></div>
-        <div class="box-item"><div class="box-check">✓</div><div class="box-item-text"><strong>Mẹo chọn ảnh gốc tốt nhất</strong>Để AI tạo ra kết quả đẹp nhất có thể</div></div>
-        <div class="box-item"><div class="box-check">✓</div><div class="box-item-text"><strong>Prompt chỉnh sửa nâng cao</strong>Fine-tune ánh sáng, nền, phong cách trang phục</div></div>
-        <div class="box-item"><div class="box-check">✓</div><div class="box-item-text"><strong>Cập nhật miễn phí</strong>Nhận thêm prompt mới khi chúng tôi ra bản cập nhật</div></div>
-        <div class="box-item"><div class="box-check">✓</div><div class="box-item-text"><strong>Giao hàng ngay sau thanh toán</strong>Link tải về email trong vòng 1-3 phút</div></div>
-        <div class="box-item"><div class="box-check">✓</div><div class="box-item-text"><strong>Hóa đơn VAT điện tử</strong>Hợp lệ cho kế toán doanh nghiệp</div></div>
+        <div class="box-item"><div class="box-check">✓</div><div class="box-item-text"><strong>Tool tương tác tùy chỉnh đầy đủ</strong>Chọn màu nền, trang phục, phong cách, bối cảnh, ánh sáng, cảm xúc</div></div>
+        <div class="box-item"><div class="box-check">✓</div><div class="box-item-text"><strong>Tạo prompt hoàn chỉnh tự động</strong>Không cần viết prompt — tool tự ghép thành câu prompt tối ưu cho AI</div></div>
+        <div class="box-item"><div class="box-check">✓</div><div class="box-item-text"><strong>Không giới hạn số ảnh tạo</strong>Tạo bao nhiêu ảnh, bao nhiêu phong cách cũng được — miễn phí mãi mãi</div></div>
+        <div class="box-item"><div class="box-check">✓</div><div class="box-item-text"><strong>Dùng chung cho cả gia đình</strong>Chia sẻ cho bạn bè, chị em, con mình — không giới hạn người dùng</div></div>
+        <div class="box-item"><div class="box-check">✓</div><div class="box-item-text"><strong>Tương thích nhiều nền tảng AI</strong>Gemini (miễn phí), Nano Banana Pro, ChatGPT, Midjourney</div></div>
+        <div class="box-item"><div class="box-check">✓</div><div class="box-item-text"><strong>Hướng dẫn sử dụng chi tiết</strong>Từng bước bằng tiếng Việt, có ảnh minh họa — không cần biết về AI</div></div>
+        <div class="box-item"><div class="box-check">✓</div><div class="box-item-text"><strong>Giao hàng ngay sau thanh toán</strong>Link tool gửi về email trong 1–3 phút, tải về dùng ngay</div></div>
+        <div class="box-item"><div class="box-check">✓</div><div class="box-item-text"><strong>Hóa đơn VAT điện tử tự động</strong>Hợp lệ cho kế toán doanh nghiệp, gửi kèm trong email</div></div>
       </div>
     </div>
   </div>
@@ -532,27 +809,27 @@ footer p{font-size:12px;color:var(--text3);line-height:1.9;max-width:600px;margi
 <section class="testi-section">
   <div class="container">
     <p class="s-eye">Khách hàng nói gì</p>
-    <h2 class="s-title">Họ đã thay đổi ảnh profile<br><em class="text-rose">như thế nào</em></h2>
+    <h2 class="s-title">Họ đã tạo ảnh profile đẹp<br><em class="text-rose">như thế nào</em></h2>
     <div class="testi-grid">
       <div class="testi-card">
         <div class="stars">★★★★★</div>
-        <div class="testi-text">Mình đã định đặt lịch chụp studio 800k, nhưng thử bộ prompt này trước. Kết quả ảnh đẹp không kém gì — tiết kiệm được cả tiền lẫn thời gian. Dùng ngay cho LinkedIn và CV xin việc!</div>
+        <div class="testi-text">Mình đã định đặt lịch chụp studio 1.2 triệu, nhưng thử tool này trước. Mở lên, chọn vài cái, copy prompt dán vào Gemini, upload ảnh selfie — 5 phút sau có ảnh đẹp hơn cả studio thật! Giờ mình dùng cho cả team.</div>
         <div class="testi-author">
           <div class="testi-av">L</div>
-          <div><div class="testi-name">Linh N.T.</div><div class="testi-role">Marketing Executive · TP.HCM</div></div>
+          <div><div class="testi-name">Linh N.T.</div><div class="testi-role">Marketing Manager · TP.HCM</div></div>
         </div>
       </div>
       <div class="testi-card">
         <div class="stars">★★★★★</div>
-        <div class="testi-text">Ban đầu còn nghi ngờ AI tạo ảnh có giống mình không. Nhưng kết quả giữ được khuôn mặt mình — chỉ là đẹp hơn rất nhiều. Thử 3 phong cách khác nhau chỉ trong 15 phút!</div>
+        <div class="testi-text">Ban đầu nghi ngờ AI có giữ được khuôn mặt mình không. Nhưng kết quả giống mình đến 99% — chỉ là đẹp hơn rất nhiều. Tuần trước tạo phong cách business cho LinkedIn, hôm nay tạo phong cách nhẹ nhàng hơn cho Facebook.</div>
         <div class="testi-author">
           <div class="testi-av">M</div>
-          <div><div class="testi-name">Mai P.</div><div class="testi-role">Freelancer · Hà Nội</div></div>
+          <div><div class="testi-name">Mai P.T.</div><div class="testi-role">Freelancer · Hà Nội</div></div>
         </div>
       </div>
       <div class="testi-card">
         <div class="stars">★★★★★</div>
-        <div class="testi-text">File hướng dẫn rõ ràng, dễ làm theo dù mình không rành công nghệ. Làm xong ảnh cho team dùng luôn — ai cũng khen đẹp và chuyên nghiệp. Worth it hoàn toàn!</div>
+        <div class="testi-text">Tool dễ dùng lắm, chọn xong là có prompt ngay. Mình không rành công nghệ nhưng vẫn làm được. Đã làm ảnh cho 3 người trong gia đình — ai cũng khen. Worth it hoàn toàn so với giá 199k!</div>
         <div class="testi-author">
           <div class="testi-av">H</div>
           <div><div class="testi-name">Hà T.B.</div><div class="testi-role">Team Leader · Đà Nẵng</div></div>
@@ -566,14 +843,18 @@ footer p{font-size:12px;color:var(--text3);line-height:1.9;max-width:600px;margi
 <section class="pricing-section" id="pricing">
   <div class="container">
     <p class="s-eye">Sở hữu ngay hôm nay</p>
-    <h2 class="s-title">Đầu tư một lần —<br><em class="text-rose">dùng mãi mãi</em></h2>
+    <h2 class="s-title">Đầu tư một lần —<br><em class="text-rose">Tạo không giới hạn mãi mãi</em></h2>
     <div class="price-box">
       <div class="price-head">
-        <div class="price-ribbon">🔥 Ưu đãi ra mắt · Giới hạn 200 bộ</div>
-        <div class="price-name">Femme Studio — <em>Bộ Prompt AI Ảnh Profile</em></div>
-        <div class="price-desc">50+ prompt chuyên nghiệp · File HTML tương tác · Nhận ngay sau thanh toán</div>
+        <div class="price-ribbon">🔥 Ưu đãi ra mắt · Giới hạn số lượng</div>
+        <div class="price-name">Femme Studio — <em>Tool AI Tạo Prompt Ảnh Profile</em></div>
+        <div class="price-desc">Tool tương tác · Tạo không giới hạn · Chia sẻ cho cả gia đình · Dùng vĩnh viễn</div>
       </div>
       <div class="price-body">
+        <div class="price-koi">
+          <span style="font-size:20px">🧋</span>
+          <span>Chi phí chỉ bằng <strong>2 ly trà sữa KOI</strong> — nhưng có ảnh đẹp hơn chụp studio, tạo không giới hạn, dùng mãi mãi</span>
+        </div>
         <div class="price-countdown">
           ⏰ Giá ưu đãi kết thúc sau: <strong id="cd-h">24</strong>:<strong id="cd-m">00</strong>:<strong id="cd-s">00</strong>
         </div>
@@ -584,27 +865,27 @@ footer p{font-size:12px;color:var(--text3);line-height:1.9;max-width:600px;margi
             <div class="pc-av">H</div>
             <div class="pc-av">T</div>
           </div>
-          <div class="pc-text"><strong id="price-buyers">89</strong> người đã sở hữu bộ này · ⭐ 4.9/5</div>
+          <div class="pc-text"><strong id="price-buyers">89</strong> người đã sở hữu · ⭐ 4.9/5</div>
         </div>
         <div class="price-row">
           <span class="price-old">399k</span>
           <span class="price-new">199</span>
           <span class="price-unit">k</span>
         </div>
-        <div class="price-save">🎉 Tiết kiệm 200k — Chỉ áp dụng hôm nay</div>
+        <div class="price-save">🎉 Tiết kiệm 200k — Ưu đãi ra mắt · Giá sẽ tăng sau khi hết hạn</div>
         <div class="price-feats">
-          <div class="pf-item"><span class="pf-check">✦</span>50+ prompt AI ảnh profile chuyên nghiệp</div>
-          <div class="pf-item"><span class="pf-check">✦</span>Hướng dẫn sử dụng từng bước chi tiết</div>
-          <div class="pf-item"><span class="pf-check">✦</span>Tương thích Gemini · ChatGPT · Midjourney</div>
-          <div class="pf-item"><span class="pf-check">✦</span>Nhận file ngay sau thanh toán (1-3 phút)</div>
+          <div class="pf-item"><span class="pf-check">✦</span>Tool tương tác tùy chỉnh đầy đủ — tự tạo prompt không giới hạn</div>
+          <div class="pf-item"><span class="pf-check">✦</span>Chia sẻ cho cả gia đình, bạn bè cùng dùng</div>
+          <div class="pf-item"><span class="pf-check">✦</span>Tương thích Gemini · Nano Banana Pro · ChatGPT</div>
+          <div class="pf-item"><span class="pf-check">✦</span>Hướng dẫn sử dụng từng bước bằng tiếng Việt</div>
+          <div class="pf-item"><span class="pf-check">✦</span>Nhận tool ngay sau thanh toán (1–3 phút)</div>
           <div class="pf-item"><span class="pf-check">✦</span>Hóa đơn VAT điện tử tự động</div>
-          <div class="pf-item"><span class="pf-check">✦</span>Cập nhật miễn phí vĩnh viễn</div>
         </div>
-        <button class="price-cta" onclick="openModal()">✨ Sở Hữu Ngay — Chỉ 199k</button>
+        <button class="price-cta" onclick="openModal()">✨ Sở Hữu Tool Ngay — Chỉ 199k</button>
         <div class="price-note">
-          🔒 Thanh toán bảo mật qua chuyển khoản ngân hàng<br>
-          📧 Link tải file gửi về email ngay sau thanh toán<br>
-          🧾 Hóa đơn VAT điện tử kèm theo
+          🔒 Thanh toán bảo mật qua chuyển khoản ACB<br>
+          📧 Link tool gửi về email ngay sau thanh toán<br>
+          🧾 Hóa đơn VAT điện tử · 👨‍👩‍👧 Dùng chung cả gia đình
         </div>
       </div>
     </div>
@@ -618,28 +899,32 @@ footer p{font-size:12px;color:var(--text3);line-height:1.9;max-width:600px;margi
     <h2 class="s-title">Bạn đang thắc mắc<br><em class="text-rose">điều gì?</em></h2>
     <div class="faq-list">
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">AI có tạo ảnh giống mặt tôi không? <span class="faq-icon">+</span></button>
-        <div class="faq-a">Có — khi bạn cung cấp ảnh gốc của mình, AI sẽ giữ nguyên khuôn mặt, đường nét đặc trưng của bạn và chỉ cải thiện các yếu tố như ánh sáng, nền, trang phục. Kết quả là ảnh nhìn vẫn là bạn — chỉ đẹp và chuyên nghiệp hơn nhiều.</div>
+        <button class="faq-q" onclick="toggleFaq(this)">Tool này hoạt động như thế nào? <span class="faq-icon">+</span></button>
+        <div class="faq-a">Femme Studio là một file HTML bạn mở trong trình duyệt (Chrome, Safari, v.v.). Trong tool, bạn chọn các tùy chọn: phong cách ảnh, màu nền, trang phục, bối cảnh, ánh sáng, cảm xúc... Tool sẽ tự động ghép thành một câu prompt hoàn chỉnh, tối ưu cho AI. Bạn copy prompt đó, mở Gemini hoặc Nano Banana Pro, paste prompt + upload ảnh thật của bạn, và AI sẽ tạo ra ảnh profile chuyên nghiệp.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">Cần có tài khoản AI trả phí không? <span class="faq-icon">+</span></button>
-        <div class="faq-a">Không bắt buộc. Nhiều prompt trong bộ này hoạt động tốt với Gemini miễn phí và ChatGPT miễn phí. Với tài khoản trả phí, chất lượng ảnh sẽ tốt hơn nhưng bản miễn phí vẫn cho kết quả rất ổn.</div>
+        <button class="faq-q" onclick="toggleFaq(this)">AI có tạo ảnh giống mặt tôi không? <span class="faq-icon">+</span></button>
+        <div class="faq-a">Có — khi bạn upload ảnh gốc của mình, AI sẽ giữ nguyên khuôn mặt, đường nét đặc trưng của bạn và chỉ cải thiện các yếu tố như ánh sáng, nền, trang phục và tổng thể. Kết quả là ảnh nhìn vẫn là bạn — chỉ đẹp và chuyên nghiệp hơn rất nhiều. Gemini và Nano Banana Pro đặc biệt tốt trong việc giữ đặc điểm khuôn mặt.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Cần tài khoản AI trả phí không? <span class="faq-icon">+</span></button>
+        <div class="faq-a">Không bắt buộc. Gemini có bản miễn phí hoạt động rất tốt với các prompt trong tool. Nano Banana Pro cũng có gói dùng thử. Với tài khoản trả phí, chất lượng ảnh sẽ tốt hơn và tạo được nhiều ảnh hơn — nhưng bản miễn phí vẫn cho kết quả rất ổn để bắt đầu.</div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">Không rành công nghệ có dùng được không? <span class="faq-icon">+</span></button>
-        <div class="faq-a">Hoàn toàn được. Bộ prompt đi kèm hướng dẫn từng bước bằng tiếng Việt — ảnh chụp màn hình chi tiết. Bạn chỉ cần copy, paste và upload ảnh của mình. Không cần biết lập trình hay chỉnh sửa ảnh.</div>
+        <div class="faq-a">Hoàn toàn được. Tool được thiết kế để ai cũng dùng được — chỉ cần click chọn, copy và paste. Kèm theo hướng dẫn từng bước bằng tiếng Việt với ảnh minh họa chi tiết. Nhiều khách hàng cho biết họ không quen công nghệ nhưng vẫn làm được ảnh đẹp chỉ trong lần đầu dùng.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">Tôi nhận file như thế nào sau khi thanh toán? <span class="faq-icon">+</span></button>
-        <div class="faq-a">Sau khi chuyển khoản, hệ thống tự động xác nhận giao dịch trong 1-3 phút. Link tải file sẽ được gửi đến email bạn đăng ký. Bạn cũng có thể tải ngay trên trang sau khi thanh toán thành công.</div>
+        <button class="faq-q" onclick="toggleFaq(this)">Tôi có thể chia sẻ tool cho bạn bè, gia đình không? <span class="faq-icon">+</span></button>
+        <div class="faq-a">Có thể. Khi mua, bạn nhận được file tool — bạn có thể chia sẻ file đó cho bạn bè, chị em, hoặc cả gia đình cùng sử dụng. Không có giới hạn về số người dùng trong gia đình hay nhóm bạn thân. Tuy nhiên, vui lòng không đăng lên mạng để bán lại hoặc phân phối công khai.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">Chính sách hoàn tiền như thế nào? <span class="faq-icon">+</span></button>
-        <div class="faq-a">Đây là sản phẩm số nên không hoàn tiền sau khi đã giao file. Tuy nhiên nếu bạn không nhận được file hoặc link bị lỗi, liên hệ admin@hanadola.com trong vòng 24h để được hỗ trợ gửi lại miễn phí.</div>
+        <button class="faq-q" onclick="toggleFaq(this)">Tôi nhận tool như thế nào? <span class="faq-icon">+</span></button>
+        <div class="faq-a">Sau khi chuyển khoản, hệ thống tự động xác nhận giao dịch trong 1–3 phút. Link tải tool sẽ được gửi đến email bạn đăng ký. Bạn cũng có thể tải trực tiếp trên trang ngay sau khi thanh toán thành công — không cần chờ đợi lâu.</div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">Có hóa đơn VAT không? <span class="faq-icon">+</span></button>
-        <div class="faq-a">Có. Hóa đơn VAT điện tử hợp lệ được phát hành tự động và gửi kèm trong email ngay sau thanh toán thành công. Hóa đơn đầy đủ thông tin công ty, MST, hợp lệ cho mục đích kế toán doanh nghiệp.</div>
+        <div class="faq-a">Có. Hóa đơn VAT điện tử hợp lệ được phát hành tự động và gửi kèm trong email ngay sau thanh toán. Hóa đơn đầy đủ thông tin công ty, MST, hợp lệ cho mục đích kế toán doanh nghiệp.</div>
       </div>
     </div>
   </div>
@@ -651,32 +936,32 @@ footer p{font-size:12px;color:var(--text3);line-height:1.9;max-width:600px;margi
     <div class="policy-grid">
       <div class="policy-card">
         <div class="policy-icon">🛒</div>
-        <div class="policy-title">Quy Trình Mua Hàng</div>
+        <div class="policy-title">Quy Trình Nhận Tool</div>
         <div class="policy-list">
           <div class="policy-item"><span class="policy-dot">✦</span>Điền tên, email vào form đặt hàng</div>
           <div class="policy-item"><span class="policy-dot">✦</span>Quét mã QR chuyển khoản <strong>199.000đ</strong> qua ACB</div>
-          <div class="policy-item"><span class="policy-dot">✦</span>Hệ thống xác nhận tự động trong 1-3 phút</div>
-          <div class="policy-item"><span class="policy-dot">✦</span>Nhận link tải file + hóa đơn VAT qua email</div>
+          <div class="policy-item"><span class="policy-dot">✦</span>Hệ thống xác nhận tự động trong 1–3 phút</div>
+          <div class="policy-item"><span class="policy-dot">✦</span>Nhận link tool + hóa đơn VAT qua email</div>
         </div>
       </div>
       <div class="policy-card">
-        <div class="policy-icon">🔄</div>
-        <div class="policy-title">Chính Sách Đổi Trả</div>
+        <div class="policy-icon">📋</div>
+        <div class="policy-title">Điều Khoản Sử Dụng</div>
         <div class="policy-list">
-          <div class="policy-item"><span class="policy-dot">✦</span>Sản phẩm số — không hoàn tiền sau khi đã giao file</div>
-          <div class="policy-item"><span class="policy-dot">✦</span>Không nhận được file → liên hệ trong 24h để gửi lại miễn phí</div>
-          <div class="policy-item"><span class="policy-dot">✦</span>Hỗ trợ 1-1 qua email nếu gặp khó khăn khi dùng</div>
-          <div class="policy-item"><span class="policy-dot">✦</span>Liên hệ: <strong>admin@hanadola.com</strong></div>
+          <div class="policy-item"><span class="policy-dot">✦</span>Sản phẩm số — cấp phép cá nhân & gia đình</div>
+          <div class="policy-item"><span class="policy-dot">✦</span>Không phân phối lại hoặc bán lại công khai</div>
+          <div class="policy-item"><span class="policy-dot">✦</span>Không nhận được tool → liên hệ 24h để gửi lại</div>
+          <div class="policy-item"><span class="policy-dot">✦</span>Hỗ trợ: <strong>admin@hanadola.com</strong></div>
         </div>
       </div>
       <div class="policy-card">
         <div class="policy-icon">🔒</div>
         <div class="policy-title">Bảo Mật Thông Tin</div>
         <div class="policy-list">
-          <div class="policy-item"><span class="policy-dot">✦</span>Thông tin cá nhân chỉ dùng để giao hàng và hỗ trợ</div>
+          <div class="policy-item"><span class="policy-dot">✦</span>Thông tin cá nhân chỉ dùng để giao hàng</div>
           <div class="policy-item"><span class="policy-dot">✦</span>Không chia sẻ, không bán cho bên thứ ba</div>
-          <div class="policy-item"><span class="policy-dot">✦</span>Thanh toán xử lý qua SePay &amp; ACB — mã hóa SSL</div>
-          <div class="policy-item"><span class="policy-dot">✦</span>Dữ liệu lưu trữ an toàn trên hệ thống Vercel</div>
+          <div class="policy-item"><span class="policy-dot">✦</span>Thanh toán xử lý qua SePay &amp; ACB — SSL</div>
+          <div class="policy-item"><span class="policy-dot">✦</span>Dữ liệu bảo mật trên hệ thống Vercel</div>
         </div>
       </div>
     </div>
@@ -690,7 +975,7 @@ footer p{font-size:12px;color:var(--text3);line-height:1.9;max-width:600px;margi
         <div class="company-val">P903, Tầng 9, Diamond Plaza<br>34 Lê Duẩn, Q.1, TP. Hồ Chí Minh</div>
       </div>
       <div>
-        <div class="company-label">Liên hệ</div>
+        <div class="company-label">Liên hệ hỗ trợ</div>
         <div class="company-val">
           📧 <a href="mailto:admin@hanadola.com">admin@hanadola.com</a><br>
           📞 <a href="tel:0935251866">0935 251 866</a><br>
@@ -709,10 +994,10 @@ footer p{font-size:12px;color:var(--text3);line-height:1.9;max-width:600px;margi
 <!-- STICKY BAR -->
 <div class="sticky-bar" id="sticky-bar">
   <div class="sb-left">
-    <div class="sb-title">Femme Studio — Bộ Prompt AI Ảnh Profile</div>
-    <div class="sb-price">199k <span style="font-size:13px;color:var(--text3);text-decoration:line-through;font-family:var(--ff-b)">399k</span></div>
+    <div class="sb-title">Tool AI Tạo Ảnh Profile — Tạo Không Giới Hạn</div>
+    <div class="sb-price">199k <span style="font-size:13px;color:var(--text3);text-decoration:line-through;font-family:var(--ff-b);font-weight:300">399k</span></div>
   </div>
-  <button class="sb-cta" onclick="openModal()">Sở Hữu Ngay →</button>
+  <button class="sb-cta" onclick="openModal()">Mua Ngay →</button>
 </div>
 
 <!-- MODAL -->
@@ -722,17 +1007,17 @@ footer p{font-size:12px;color:var(--text3);line-height:1.9;max-width:600px;margi
     <!-- STEP 1: Form -->
     <div id="step1">
       <div class="modal-head">
-        <div class="modal-title">Đặt hàng</div>
+        <div class="modal-title">Sở hữu Tool ngay</div>
         <button class="modal-close" onclick="closeModal()">✕</button>
       </div>
       <div class="modal-body">
         <div class="modal-pkg">
-          <div class="modal-pkg-name">Femme Studio — Bộ Prompt AI Ảnh Profile</div>
+          <div class="modal-pkg-name">Femme Studio — Tool AI Tạo Ảnh Profile · Dùng vĩnh viễn</div>
           <div class="modal-pkg-price">199<span style="font-size:16px;font-weight:300;color:var(--text2)">k</span></div>
         </div>
         <label class="m-label">Họ và tên *</label>
         <input class="m-input" type="text" id="m-name" placeholder="Nguyễn Thị Lan">
-        <label class="m-label">Email nhận file *</label>
+        <label class="m-label">Email nhận tool *</label>
         <input class="m-input" type="email" id="m-email" placeholder="email@gmail.com">
         <label class="m-label">Số điện thoại (tuỳ chọn)</label>
         <input class="m-input" type="tel" id="m-phone" placeholder="09xx.xxx.xxx">
@@ -747,7 +1032,7 @@ footer p{font-size:12px;color:var(--text3);line-height:1.9;max-width:600px;margi
         <button class="modal-close" onclick="closeModal()">✕</button>
       </div>
       <div class="s2-wrap">
-        <div class="s2-title">Chuyển khoản để nhận file</div>
+        <div class="s2-title">Chuyển khoản để nhận Tool</div>
         <div class="s2-sub">Quét mã QR bên dưới hoặc chuyển khoản thủ công</div>
         <div class="qr-box">
           <img id="s2-qr" src="" alt="QR Code">
@@ -761,7 +1046,7 @@ footer p{font-size:12px;color:var(--text3);line-height:1.9;max-width:600px;margi
         </div>
         <div class="s2-status checking" id="s2-status">⏳ Đang chờ xác nhận thanh toán...</div>
         <div class="qr-spinner" id="s2-spinner"></div>
-        <div style="text-align:center;font-size:12px;color:var(--text3);margin-top:8px">Hệ thống tự động xác nhận trong 1-3 phút sau khi bạn chuyển khoản</div>
+        <div style="text-align:center;font-size:12px;color:var(--text3);margin-top:8px">Hệ thống tự động xác nhận trong 1–3 phút sau khi bạn chuyển khoản</div>
       </div>
     </div>
 
@@ -770,8 +1055,8 @@ footer p{font-size:12px;color:var(--text3);line-height:1.9;max-width:600px;margi
       <div class="s3-wrap">
         <div class="s3-icon">🎉</div>
         <div class="s3-title">Thanh toán thành công!</div>
-        <div class="s3-sub" id="s3-sub">Cảm ơn bạn đã tin tưởng Femme Studio.<br>Link tải file đã được gửi về email của bạn.</div>
-        <a href="#" id="s3-btn" class="s3-btn">📥 Tải Bộ Prompt Ngay</a>
+        <div class="s3-sub" id="s3-sub">Cảm ơn bạn đã tin tưởng Femme Studio.<br>Link tool đã được gửi về email của bạn.</div>
+        <a href="#" id="s3-btn" class="s3-btn">✨ Mở Tool Ngay</a>
         <div class="s3-note">📧 Link cũng đã gửi về email · 🧾 Hóa đơn VAT kèm theo<br>Cần hỗ trợ: admin@hanadola.com</div>
       </div>
     </div>
@@ -804,17 +1089,16 @@ footer p{font-size:12px;color:var(--text3);line-height:1.9;max-width:600px;margi
 
 /* ── BUYER COUNT ANIMATION ── */
 (function(){
-  const base = 89;
-  let count = base;
+  let count = 89;
   function updateCount(){
     ['hdr-buyers','buyers-count','price-buyers'].forEach(id=>{
       const el = document.getElementById(id);
       if(el) el.textContent = count;
     });
   }
-  // Gradually increase count to create social proof
   setTimeout(()=>{ count=90; updateCount(); }, 45000);
   setTimeout(()=>{ count=91; updateCount(); }, 120000);
+  setTimeout(()=>{ count=92; updateCount(); }, 240000);
 })();
 
 /* ── STICKY BAR ── */
@@ -822,7 +1106,7 @@ const stickyBar = document.getElementById('sticky-bar');
 window.addEventListener('scroll',()=>{
   if(window.scrollY > 500) stickyBar.classList.add('show');
   else stickyBar.classList.remove('show');
-});
+},{passive:true});
 
 /* ── FAQ ── */
 function toggleFaq(btn){
@@ -905,7 +1189,7 @@ async function checkPayment(){
       clearInterval(pollTimer);
       document.getElementById('s2-spinner').style.display = 'none';
       document.getElementById('s3-btn').href = d.fileUrl || '#';
-      document.getElementById('s3-sub').innerHTML = `Cảm ơn <strong>${d.name || 'bạn'}</strong>! Link tải file đã gửi về email của bạn.`;
+      document.getElementById('s3-sub').innerHTML = `Cảm ơn <strong>${d.name || 'bạn'}</strong>! Link tool đã gửi về email của bạn. Mở tool và bắt đầu tạo ảnh ngay nhé! ✨`;
       showStep(3);
     }
   } catch(e){ /* retry */ }
