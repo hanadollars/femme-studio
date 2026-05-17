@@ -36,7 +36,7 @@ module.exports = async function handler(req, res) {
       name,
       email,
       phone: phone || '',
-      amount: 199000,
+      amount: 99000,
       status: 'pending',
       createdAt: new Date().toISOString(),
     };
@@ -46,13 +46,13 @@ module.exports = async function handler(req, res) {
     const acbAccount = process.env.ACB_ACCOUNT;
     const accountName = encodeURIComponent(process.env.ACCOUNT_NAME || 'HANADOLA');
     const description = encodeURIComponent(`Thanh toan ${code}`);
-    const qrUrl = `https://img.vietqr.io/image/ACB-${acbAccount}-compact2.png?amount=199000&addInfo=${description}&accountName=${accountName}`;
+    const qrUrl = `https://img.vietqr.io/image/ACB-${acbAccount}-compact2.png?amount=99000&addInfo=${description}&accountName=${accountName}`;
 
     return res.status(200).json({
       success: true,
       orderCode: code,
       qrUrl,
-      amount: 199000,
+      amount: 99000,
       bankAccount: acbAccount,
       bankInfo: {
         account: acbAccount,

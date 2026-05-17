@@ -3,7 +3,7 @@
 
 const ORDER_CODE_REGEX = /FMS[A-Z0-9]{4}/i;
 const EINVOICE_BASE = 'https://einvoice-api.sepay.vn';
-const PRICE = 199000;
+const PRICE = 99000;
 
 /* ── KV helpers ── */
 async function kvGet(key) {
@@ -102,10 +102,12 @@ async function createEInvoice({ order, transferAmount }) {
     body: JSON.stringify(payload),
   });
   const invoiceData = await invoiceRes.json();
+  console.log('[eInvoice] Create response:', JSON.stringify(invoiceData)?.slice(0, 300));
   const data = invoiceData?.data || null;
   if (!data) return null;
 
   const trackingCode = data.tracking_code;
+  console.log('[eInvoice] tracking_code:', trackingCode, '| view_url:', data.view_url || data.pdf_url || null);
   if (trackingCode) {
     try {
       const releaseRes = await fetch(`${EINVOICE_BASE}/v1/invoices/release`, {
@@ -113,8 +115,16 @@ async function createEInvoice({ order, transferAmount }) {
         headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
         body: JSON.stringify({ tracking_codes: [trackingCode] }),
       });
-                  const releaseData = await releaseRes.json();
-      if (releaseData?.data) Object.assign(data, releaseData.data);
+      const releaseText = await releaseRes.text();
+      console.log('[eInvoice] Release status:', releaseRes.status, '| body:', releaseText?.slice(0, 200));
+      if (releaseText && releaseText.trim()) {
+        try {
+          const releaseData = JSON.parse(releaseText);
+          if (releaseData?.data) Object.assign(data, releaseData.data);
+        } catch (e) {
+          console.error('[eInvoice] Release parse error:', e.message);
+        }
+      }
     } catch (err) {
       console.error('[eInvoice] Release error:', err.message);
     }
